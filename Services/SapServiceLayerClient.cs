@@ -88,7 +88,7 @@ namespace SapGateway.Services
             await Login(company);
         }
 
-        public async Task<bool> InsertCurrencyData(string company, string sapCurrencyId, string rateDate, double rate)
+        public async Task InsertCurrencyData(string company, string sapCurrencyId, string rateDate, double rate)
         {
             await EnsureLogin(company);
 
@@ -111,12 +111,12 @@ namespace SapGateway.Services
                     if (response.IsSuccessStatusCode)
                     {
                         Console.WriteLine("Update Curency success");
-                        return true;
+    
                     }
                     else
                     {
-                        Console.WriteLine("Update Curency fail");
-                        return false;
+                        Console.WriteLine("Sap update curency fail");
+                        throw new Exception("Sap update curency fail");
                     }
                 }
             }
@@ -124,8 +124,6 @@ namespace SapGateway.Services
             {
                 Console.WriteLine("An error occurred while adding exchangerate: " + ex.Message);
             }
-
-            return true;
         }
         
         public async Task<string> GetPO(string company, string? poNum)
