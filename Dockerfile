@@ -19,6 +19,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
+# Set timezone to Bangkok (UTC+7)
+ENV TZ=Asia/Bangkok
+
 # Expose port 8080
 EXPOSE 8080
 
