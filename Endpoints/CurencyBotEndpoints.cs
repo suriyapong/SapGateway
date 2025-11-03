@@ -22,11 +22,15 @@ namespace SapGateway.Endpoints
                 if (body == null) return Results.BadRequest(new { message = "Request body is required" });
 
                 CurrencyRateModel currencyBank = await GetCurrencyFromBankById(body.Period, body.CurrencyId);
-                Console.WriteLine(currencyBank.Period);
-                Console.WriteLine(currencyBank.BuyingTransfer, currencyBank.Selling);
 
-                var res = await sl.InsertCurrencyData(company, body.SAPCurrencyId, body.Period, body.IsBuyingRate ? Convert.ToDouble(currencyBank.BuyingTransfer) : Convert.ToDouble(currencyBank.Selling));
-                return Results.Ok(new { Message = $"Update curency company : {company}" });
+                var rate = Convert.ToDouble(currencyBank.BuyingTransfer);
+                if (!body.IsBuyingRate)
+                {
+                    rate = Convert.ToDouble(currencyBank.Selling);
+                }
+                
+                var res = await sl.InsertCurrencyData(company, body.SAPCurrencyId, body.Period, rate);
+                return Results.Ok(new { Message = $"Update curency company : {company},{body.SAPCurrencyId},{body.Period},{rate}" });
             }
             catch (Exception ex)
             {
