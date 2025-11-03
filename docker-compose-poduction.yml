@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  sap-gateway:
+    image: sapgetway:latest
+    ports:
+      - "8081:8080"
+    environment:
+      SAPSERVICELAYER__BASEURL: "https://192.168.105.208:50000/b1s/v1/"
+      SAPSERVICELAYER__USERNAME: "it01"
+      SAPSERVICELAYER__PASSWORD: "1234"
+      SAPSQL__HOST: "YOUR_SQL_SERVER"
+      SAPSQL__USER: "sapadmin"
+      SAPSQL__PASSWORD: "Prodigy72"
+      SAPDBMAP__NOVAX: "Nova_X"
+      SAPDBMAP__VISTAOCEAN: "Vista_Ocean_new"

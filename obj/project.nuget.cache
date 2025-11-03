@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z4eZJXRQyzw=",
+  "dgSpecHash": "eNzqsrkmzUE=",
   "success": true,
-  "projectFilePath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\SapGateway.csproj",
+  "projectFilePath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PDG-IT-02\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\PDG-IT-02\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\SapGateway.csproj": {}
+    "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj": {}
   },
   "projects": {
-    "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\SapGateway.csproj": {
+    "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\SapGateway.csproj",
+        "projectUniqueName": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj",
         "projectName": "SapGateway",
-        "projectPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\SapGateway.csproj",
+        "projectPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj",
         "packagesPath": "C:\\Users\\PDG-IT-02\\.nuget\\packages\\",
-        "outputPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\obj\\",
+        "outputPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
