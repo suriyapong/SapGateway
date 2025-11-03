@@ -28,8 +28,9 @@ namespace SapGateway.Endpoints
                 {
                     rate = Convert.ToDouble(currencyBank.Selling);
                 }
-                
+
                 await sl.InsertCurrencyData(company, body.SAPCurrencyId, body.Period, rate);
+                
                 return Results.Ok(new { Message = $"Update curency company : {company},{body.SAPCurrencyId},{body.Period},{rate}" });
             }
             catch (Exception ex)

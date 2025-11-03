@@ -111,18 +111,19 @@ namespace SapGateway.Services
                     if (response.IsSuccessStatusCode)
                     {
                         Console.WriteLine("Update Curency success");
-    
                     }
                     else
                     {
-                        Console.WriteLine("Sap update curency fail");
-                        throw new Exception("Sap update curency fail");
+                        var respText = await response.Content.ReadAsStringAsync();
+                        throw new Exception($"SAP update currency failed for company {company} ({sapCurrencyId}). " + $"Response: {response.StatusCode} - {respText}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occurred while adding exchangerate: " + ex.Message);
+                Console.WriteLine($"[InsertCurrencyData] Error: {ex.Message}", ex);
+                // ✅ โยนต่อขึ้นไปพร้อมบอกชื่อ service/function
+                throw new Exception($"[InsertCurrencyData] Error: {ex.Message}", ex);
             }
         }
         
