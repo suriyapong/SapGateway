@@ -97,7 +97,7 @@ namespace SapGateway.Endpoints
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Return From Bank => ", BOTRate.period.ToString(), BOTRate.currency_id, BOTRate.selling, BOTRate.buying_transfer);
+                                    Console.WriteLine("Return From Bank => " + BOTRate.period.ToString() +" " + BOTRate.currency_id + " " + BOTRate.selling + " " + BOTRate.buying_transfer);
                                     return new CurrencyRateModel
                                     {
                                         Period = BOTRate.period,
