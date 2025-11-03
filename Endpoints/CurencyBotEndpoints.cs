@@ -34,7 +34,7 @@ namespace SapGateway.Endpoints
         private static async Task<IResult> HandleGetInfo(IConfiguration config)
         {
             var map = config.GetSection("SapDbMap:novax").Value;
-             return Results.Ok(new { Message = $"{map}" + "Time : " + DateTime.Now + " Time Zone : " + TimeZoneInfo.Local.ToString() });
+             return Results.Ok(new { Message = $"{map}" + "Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " Time Zone : " + TimeZoneInfo.Local.ToString() });
         }
 
         private static async Task<CurrencyRateModel> GetCurrencyFromBankById(string date, string currencyId)
