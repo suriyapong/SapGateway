@@ -78,13 +78,13 @@ namespace SapGateway.Services
 
         private async Task EnsureLogin(string company)
         {
-            if (_cache.TryGet(company, out var session))
-            {
-                _http.DefaultRequestHeaders.Remove("Cookie");
-                _http.DefaultRequestHeaders.Add("Cookie", $"B1SESSION={session.SessionId}; ROUTEID={session.RouteId}");
+            // if (_cache.TryGet(company, out var session))
+            // {
+            //     _http.DefaultRequestHeaders.Remove("Cookie");
+            //     _http.DefaultRequestHeaders.Add("Cookie", $"B1SESSION={session.SessionId}; ROUTEID={session.RouteId}");
 
-                return;
-            }
+            //     return;
+            // }
             await Login(company);
         }
 
@@ -115,7 +115,7 @@ namespace SapGateway.Services
                     }
                     else
                     {
-                         Console.WriteLine("Update Curency fail");
+                        Console.WriteLine("Update Curency fail");
                         return false;
                     }
                 }
