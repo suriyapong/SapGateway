@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\services\\sapsqlconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapsqlconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CurencyBotEndpoints.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
+              "RelativeDocumentMoniker": "Endpoints\\CurencyBotEndpoints.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
+              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T07:19:46.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-03T07:04:32.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-10-31T11:42:55.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SapSqlConnect.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Services\\SapSqlConnect.cs",
+              "RelativeDocumentMoniker": "Services\\SapSqlConnect.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Services\\SapSqlConnect.cs",
+              "RelativeToolTip": "Services\\SapSqlConnect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T11:38:04.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-31T11:37:42.122Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T10:51:13.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PowerBiEndpoints.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
+              "RelativeDocumentMoniker": "Endpoints\\PowerBiEndpoints.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
+              "RelativeToolTip": "Endpoints\\PowerBiEndpoints.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAACUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T10:50:00.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SapServiceLayerClient.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeDocumentMoniker": "Services\\SapServiceLayerClient.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeToolTip": "Services\\SapServiceLayerClient.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T06:34:52.071Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

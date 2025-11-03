@@ -1,0 +1,147 @@
+[
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
+    "Method": "HandleInsertCurrency",
+    "RelativePath": "curencybot/{company}/updatecurency",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SapGateway.Endpoints.CurrencyUpdateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PowerBiEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapPowerBiEndpoints\u003Eb__0_2",
+    "RelativePath": "powerbi/{company}/list-invoice-sql",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "PowerBi"
+    ],
+    "EndpointName": "GetInvoicesSql"
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PowerBiEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapPowerBiEndpoints\u003Eb__0_0",
+    "RelativePath": "powerbi/{company}/list-po",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "PowerBi"
+    ],
+    "EndpointName": "GetPurchaseOrders"
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PowerBiEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapPowerBiEndpoints\u003Eb__0_1",
+    "RelativePath": "powerbi/{company}/list-po-sql",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "PowerBi"
+    ],
+    "EndpointName": "GetPurchaseOrdersSql"
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.WebPrEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapWebPrEndpoints\u003Eb__0_0",
+    "RelativePath": "webpr/{company}/create-pr",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

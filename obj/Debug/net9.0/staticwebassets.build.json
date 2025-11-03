@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dhLZ1G48Ie8Sqs6nJon/Y6SE1gnC0as3Vc34PuWAHg8=",
+  "Source": "SapGateway",
+  "BasePath": "_content/SapGateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
