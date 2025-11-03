@@ -55,7 +55,10 @@ namespace SapGateway.Endpoints
             {
                 try
                 {
-                    var response = await httpClient.GetAsync($"https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period={dateTime.ToString("yyyy-MM-dd", en)}&end_period={dateTime.ToString("yyyy-MM-dd", en)}");
+                    var url = $"https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period={dateTime.ToString("yyyy-MM-dd", en)}&end_period={dateTime.ToString("yyyy-MM-dd", en)}";
+                    Console.WriteLine("Bot URL : ", url);
+
+                    var response = await httpClient.GetAsync(url);
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -94,6 +97,7 @@ namespace SapGateway.Endpoints
                                 }
                                 else
                                 {
+                                    Console.WriteLine("Return From Bank => ", BOTRate.period.ToString(), BOTRate.currency_id, BOTRate.selling, BOTRate.buying_transfer);
                                     return new CurrencyRateModel
                                     {
                                         Period = BOTRate.period,
