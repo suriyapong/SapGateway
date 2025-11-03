@@ -67,6 +67,7 @@ namespace SapGateway.Services
                     RouteId = routeId,
                     ExpireAt = DateTime.UtcNow.AddMinutes(15)
                 });
+                Console.WriteLine("Login success");
             }
             catch (Exception err)
             {
@@ -109,10 +110,12 @@ namespace SapGateway.Services
                 {
                     if (response.IsSuccessStatusCode)
                     {
+                        Console.WriteLine("Update Curency success");
                         return true;
                     }
                     else
                     {
+                         Console.WriteLine("Update Curency fail");
                         return false;
                     }
                 }
