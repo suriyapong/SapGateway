@@ -9,7 +9,7 @@ services:
     environment:
       SAPSERVICELAYER__BASEURL: "https://192.168.105.208:50000/b1s/v1/"
       SAPSERVICELAYER__USERNAME: "it01"
-      SAPSERVICELAYER__PASSWORD: "1234"
+      SAPSERVICELAYER__PASSWORD: "Prodigy@75"
       SAPSQL__HOST: "YOUR_SQL_SERVER"
       SAPSQL__USER: "sapadmin"
       SAPSQL__PASSWORD: "Prodigy72"

@@ -6,8 +6,6 @@ WORKDIR /src
 COPY ["SapGateway.csproj", "./"]
 RUN dotnet restore "SapGateway.csproj"
 
-COPY ["appsettings.json", "./"]
-
 # Copy the rest of the project files
 COPY . .
 
