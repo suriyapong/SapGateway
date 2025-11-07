@@ -15,13 +15,13 @@ namespace SapGateway.Endpoints
             group.MapGet("/info", HandleGetInfo);
         }
 
-        private static async Task<IResult> HandleInsertCurrency(string company, CurrencyUpdateRequest body, SapServiceLayerClient sl)
+        private static async Task<IResult> HandleInsertCurrency(string company, CurrencyUpdateRequest body, SapServiceLayerClient sl, IConfiguration config)
         {
             try
             {
                 if (body == null) return Results.BadRequest(new { message = "Request body is required" });
 
-                CurrencyRateModel currencyBank = await GetCurrencyFromBankById(body.Period, body.CurrencyId);
+                CurrencyRateModel currencyBank = await GetCurrencyFromBankById(body.Period, body.CurrencyId, config);
 
                 var rate = Convert.ToDouble(currencyBank.BuyingTransfer);
                 if (!body.IsBuyingRate)
@@ -42,13 +42,17 @@ namespace SapGateway.Endpoints
         private static async Task<IResult> HandleGetInfo(IConfiguration config)
         {
             var map = config.GetSection("SapDbMap:novax").Value;
-             return Results.Ok(new { Message = $"{map}" + "Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " Time Zone : " + TimeZoneInfo.Local.ToString() });
+            return Results.Ok(new { Message = $"{map}" + "Time : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " Time Zone : " + TimeZoneInfo.Local.ToString() });
         }
 
-        private static async Task<CurrencyRateModel> GetCurrencyFromBankById(string date, string currencyId)
+        private static async Task<CurrencyRateModel> GetCurrencyFromBankById(string date, string currencyId, IConfiguration config)
         {
+            var baseUrl = config.GetSection("CurrencyFromBank:BaseUrl").Value;
+            var authorization = config.GetSection("CurrencyFromBank:Authorization").Value;
+
             HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("X-IBM-Client-Id", "fb62d2f3-364f-4b98-a7b1-2001c7518fa2"); ;
+            // httpClient.DefaultRequestHeaders.Add("X-IBM-Client-Id", "fb62d2f3-364f-4b98-a7b1-2001c7518fa2");
+            httpClient.DefaultRequestHeaders.Add("Authorization", authorization);
 
             DateTime dateTime = DateTime.Parse(date, CultureInfo.InvariantCulture).AddDays(-1);
 
@@ -60,7 +64,7 @@ namespace SapGateway.Endpoints
             {
                 try
                 {
-                    var url = $"https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period={dateTime.ToString("yyyy-MM-dd", en)}&end_period={dateTime.ToString("yyyy-MM-dd", en)}";
+                    var url = baseUrl + $"?start_period={dateTime.ToString("yyyy-MM-dd", en)}&end_period={dateTime.ToString("yyyy-MM-dd", en)}";
                     Console.WriteLine("Bot URL : ", url);
 
                     var response = await httpClient.GetAsync(url);

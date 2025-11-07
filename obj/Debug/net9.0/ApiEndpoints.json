@@ -19,6 +19,22 @@
   },
   {
     "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
+    "Method": "HandleGetInfo",
+    "RelativePath": "curencybot/{company}/info",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
     "Method": "HandleInsertCurrency",
     "RelativePath": "curencybot/{company}/updatecurency",
     "HttpMethod": "POST",
