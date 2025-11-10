@@ -1,7 +1,10 @@
+﻿using Microsoft.IdentityModel.Tokens;
 using SapGateway.Models;
 using SapGateway.Services;
+using Serilog;
 using System.Globalization;
 using System.Net.Http;
+using System.Text;
 
 namespace SapGateway.Endpoints
 {
@@ -9,13 +12,17 @@ namespace SapGateway.Endpoints
     {
         public static void MapCurencyBotEndpoints(this WebApplication app)
         {
-            var group = app.MapGroup("/curencybot/{company}");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY_SUPER_SECRET_KEY_123456"));
+            var group = app.MapGroup("/curencybot/{company}"); // ✅ บังคับทุก API ใน group
 
             group.MapPost("/updatecurency", HandleInsertCurrency);
             group.MapGet("/info", HandleGetInfo);
+
+            // ข้อมูลปกติ
+            Log.Information("Start Seq log!");
         }
 
-        private static async Task<IResult> HandleInsertCurrency(string company, CurrencyUpdateRequest body, SapServiceLayerClient sl, IConfiguration config)
+        private static async Task<IResult> HandleInsertCurrency(string company, CurrencyUpdateRequest body, SapServiceLayerClient sl, IConfiguration config, SeqLogService seqLog)
         {
             try
             {
@@ -30,7 +37,19 @@ namespace SapGateway.Endpoints
                 }
 
                 await sl.InsertCurrencyData(company, body.SAPCurrencyId, body.Period, rate);
-                
+
+                seqLog.LogInfo("Currency update executed successfully", new
+                {
+                    Company = company,
+                    SAPCurrencyId = body.SAPCurrencyId,
+                    BOTCurrencyId = body.CurrencyId,
+                    Period = body.Period,
+                    RateType = body.IsBuyingRate ? "Buying" : "Selling",
+                    RateValue = rate,
+                    RequestBy = "CurrencyBot",
+                    Timestamp = DateTime.UtcNow
+                });
+
                 return Results.Ok(new { Message = $"Update curency company : {company},{body.SAPCurrencyId},{body.Period},{rate}" });
             }
             catch (Exception ex)

@@ -7,11 +7,23 @@ services:
     ports:
       - "8081:8080"
     environment:
+      # --- SAP Service Layer ---
       SAPSERVICELAYER__BASEURL: "https://192.168.105.208:50000/b1s/v1/"
       SAPSERVICELAYER__USERNAME: "it01"
       SAPSERVICELAYER__PASSWORD: "Prodigy@75"
+
+      # --- SQL Connection ---
       SAPSQL__HOST: "YOUR_SQL_SERVER"
       SAPSQL__USER: "sapadmin"
       SAPSQL__PASSWORD: "Prodigy72"
+
+      # --- DB Mapping ---
       SAPDBMAP__NOVAX: "Nova_X"
       SAPDBMAP__VISTAOCEAN: "Vista_Ocean_new"
+
+       # --- CurrencyFromBank (new) ---
+      CURRENCYFROMBANK__BASEURL: "https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/"
+      CURRENCYFROMBANK__AUTHORIZATION: "eyJvcmciOiI2NzM1NzgwZWM4YzFlYjAwMDEyYTM3NzEiLCJpZCI6ImJiYTU2ZDQzOTk2MzRkZDRiYWI1NDk1ZjYzY2ZkY2YzIiwiaCI6Im11cm11cjEyOCJ9"
+      
+      # --- AppSettings (new) ---
+      APPSETTINGS__APITOKEN: "CSsZ4PXMcUIxI4Su4DvtPIx90A6YfkUtLbSETFxZ4ab8S4251JxKS55tvzCETMVo"

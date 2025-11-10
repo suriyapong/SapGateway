@@ -159,3 +159,7 @@ C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\r
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\SapGateway.pdb
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\SapGateway.genruntimeconfig.cache
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\ref\SapGateway.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.File.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.Seq.dll

@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\docker-compose-poduction.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:docker-compose-poduction.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\services\\seqlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\seqlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\services\\tokenauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\tokenauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,33 +26,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PowerBiEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\PowerBiEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\PowerBiEndpoints.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAACUAAAA9AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SeqLogService.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SeqLogService.cs",
+              "RelativeDocumentMoniker": "Services\\SeqLogService.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SeqLogService.cs",
+              "RelativeToolTip": "Services\\SeqLogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T10:50:00.048Z",
-              "IsPinned": true,
+              "WhenOpened": "2025-11-10T08:54:32.93Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "docker-compose-poduction.yml",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\docker-compose-poduction.yml",
-              "RelativeDocumentMoniker": "docker-compose-poduction.yml",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\docker-compose-poduction.yml",
-              "RelativeToolTip": "docker-compose-poduction.yml",
+              "DocumentIndex": 2,
+              "Title": "TokenAuthMiddleware.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\TokenAuthMiddleware.cs",
+              "RelativeDocumentMoniker": "Services\\TokenAuthMiddleware.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\TokenAuthMiddleware.cs",
+              "RelativeToolTip": "Services\\TokenAuthMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-11-07T08:37:40.705Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:54:31.864Z",
               "EditorCaption": ""
             },
             {
@@ -79,73 +62,22 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-07T08:35:30.056Z",
+              "WhenOpened": "2025-11-10T08:39:42.606Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T08:34:45.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CurencyBotEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\CurencyBotEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAMwDAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T07:19:46.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Dockerfile",
-              "RelativeDocumentMoniker": "Dockerfile",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Dockerfile",
-              "RelativeToolTip": "Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-03T07:04:32.077Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-10-31T11:42:55.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SapServiceLayerClient.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
-              "RelativeDocumentMoniker": "Services\\SapServiceLayerClient.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
-              "RelativeToolTip": "Services\\SapServiceLayerClient.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAMwFcAAAAMAAAAAAAAAA==",
+              "Title": "CurencyBotEndpoints.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
+              "RelativeDocumentMoniker": "Endpoints\\CurencyBotEndpoints.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs*",
+              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs*",
+              "ViewState": "AgIAABgAAAAAAAAAAAAMwDQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T06:34:52.071Z",
+              "WhenOpened": "2025-11-03T07:19:46.758Z",
               "EditorCaption": ""
             }
           ]
