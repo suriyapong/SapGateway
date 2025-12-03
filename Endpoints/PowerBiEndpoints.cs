@@ -1,4 +1,4 @@
-using SapGateway.Services;
+﻿using SapGateway.Services;
 using Microsoft.Data.SqlClient;
 using SapGateway.Models;
 using System.Text.Json;
@@ -28,8 +28,8 @@ namespace SapGateway.Endpoints
                 .WithName("GetInvoicesSql")
                 .WithTags("PowerBi");
 
-            group.MapGet("/list-budget", async (string company, string department, string budgetCode, SapSqlConnect sql) =>
-                    await HandleGetBudgetsMock(company, department, budgetCode, sql))
+            group.MapGet("/list-budget", async (string year, string company, string department, string budgetCode, SapSqlConnect sql) =>
+                    await HandleGetBudgetsMock(year, company, department, budgetCode, sql))
                 .WithName("GetBudget")
                 .WithTags("PowerBi");
         }
@@ -89,48 +89,57 @@ namespace SapGateway.Endpoints
             }
         }
 
-        private static async Task<IResult> HandleGetBudgetsMock(
-            string company,
-            string? department,
-            string? budgetCode,
-            SapSqlConnect sql)
+        private static async Task<IResult> HandleGetBudgetsMock(string year, string company, string? department,string? budgetCode, SapSqlConnect sql)
         {
             try
             {
-                // Mock data
+                int yearFilter = int.Parse(year);
+
+                // Mock Data FY24 + FY25
                 var data = new List<BudgetModel>
-        {
-            new BudgetModel { Department = "IT", BudgetCode = "BG-001", BudgetFY25 = 1200000, ActualFY25 = 950000 },
-            new BudgetModel { Department = "IT", BudgetCode = "BG-002", BudgetFY25 = 800000, ActualFY25 = 820000 },
-            new BudgetModel { Department = "HR", BudgetCode = "BG-101", BudgetFY25 = 400000, ActualFY25 = 300000 },
-            new BudgetModel { Department = "HR", BudgetCode = "BG-102", BudgetFY25 = 500000, ActualFY25 = 600000 },
-            new BudgetModel { Department = "FIN", BudgetCode = "BG-201", BudgetFY25 = 900000, ActualFY25 = 700000 }
-        };
+                {
+                    // FY25
+                    new BudgetModel { Year = 2025, Department = "IT",  BudgetCode = "BG-001", BudgetAmount = 1200000, ActualAmount = 950000 },
+                    new BudgetModel { Year = 2025, Department = "IT",  BudgetCode = "BG-002", BudgetAmount = 800000,  ActualAmount = 820000 },
+                    new BudgetModel { Year = 2025, Department = "HR",  BudgetCode = "BG-101", BudgetAmount = 400000, ActualAmount = 300000 },
+                    new BudgetModel { Year = 2025, Department = "HR",  BudgetCode = "BG-102", BudgetAmount = 500000, ActualAmount = 600000 },
+                    new BudgetModel { Year = 2025, Department = "FIN", BudgetCode = "BG-201", BudgetAmount = 900000, ActualAmount = 700000 },
+
+                    // FY24
+                    new BudgetModel { Year = 2024, Department = "IT",  BudgetCode = "BG-001", BudgetAmount = 1100000, ActualAmount = 900000 },
+                    new BudgetModel { Year = 2024, Department = "IT",  BudgetCode = "BG-002", BudgetAmount = 780000,  ActualAmount = 760000 },
+                    new BudgetModel { Year = 2024, Department = "HR",  BudgetCode = "BG-101", BudgetAmount = 380000, ActualAmount = 350000 },
+                    new BudgetModel { Year = 2024, Department = "FIN", BudgetCode = "BG-201", BudgetAmount = 850000, ActualAmount = 840000 }
+                };
 
                 // Calculate UnderOver
-                data.ForEach(x => x.UnderOver = x.BudgetFY25 - x.ActualFY25);
+                data.ForEach(x => x.UnderOver = x.BudgetAmount - x.ActualAmount);
 
-                // Filters
+                // Filter by year (บังคับต้องส่ง)
+                data = data.Where(x => x.Year == yearFilter).ToList();
+
+                // Filter Department
                 if (!string.IsNullOrWhiteSpace(department))
-                    data = data.Where(x =>
-                        x.Department.Equals(department, StringComparison.OrdinalIgnoreCase)
-                    ).ToList();
+                    data = data
+                        .Where(x => x.Department.Equals(department, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
 
+                // Filter Budget Code
                 if (!string.IsNullOrWhiteSpace(budgetCode))
-                    data = data.Where(x =>
-                        x.BudgetCode.Equals(budgetCode, StringComparison.OrdinalIgnoreCase)
-                    ).ToList();
+                    data = data
+                        .Where(x => x.BudgetCode.Equals(budgetCode, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
 
-                // Meta summary
+                // Summary
                 var summary = new
                 {
+                    year = yearFilter,
                     count = data.Count,
-                    totalBudget = data.Sum(x => x.BudgetFY25),
-                    totalActual = data.Sum(x => x.ActualFY25),
+                    totalBudget = data.Sum(x => x.BudgetAmount),
+                    totalActual = data.Sum(x => x.ActualAmount),
                     totalUnderOver = data.Sum(x => x.UnderOver)
                 };
 
-                // Serialize
                 var jsonData = JsonSerializer.Serialize(new { data, summary });
 
                 return Results.Content(jsonData, "application/json");
