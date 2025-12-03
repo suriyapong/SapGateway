@@ -10,7 +10,7 @@ using Serilog.Sinks.Seq;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<SeqLogService>(); // ÊÁÁµÔ¤Ø³ãªé SeqLogService ÍÂÙèáÅéÇ
+builder.Services.AddSingleton<SeqLogService>(); // ï¿½ï¿½ï¿½ï¿½Ô¤Ø³ï¿½ï¿½ SeqLogService ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -33,7 +33,7 @@ builder.Services.AddSingleton<SeqLogService>();
 var app = builder.Build();
 
 // ================= USE MIDDLEWARE =================
-app.UseMiddleware<TokenAuthMiddleware>(); // ? µÃÇ¨ token ¡èÍ¹¶Ö§ endpoint
+app.UseMiddleware<TokenAuthMiddleware>(); // ? ï¿½ï¿½Ç¨ token ï¿½ï¿½Í¹ï¿½Ö§ endpoint
 
 // Map endpoints
 app.MapPowerBiEndpoints();

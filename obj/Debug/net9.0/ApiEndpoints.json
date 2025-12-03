@@ -62,6 +62,42 @@
   },
   {
     "ContainingType": "SapGateway.Endpoints.PowerBiEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapPowerBiEndpoints\u003Eb__0_3",
+    "RelativePath": "powerbi/{company}/list-budget",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "department",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "budgetCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "PowerBi"
+    ],
+    "EndpointName": "GetBudget"
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PowerBiEndpoints\u002B\u003C\u003Ec",
     "Method": "\u003CMapPowerBiEndpoints\u003Eb__0_2",
     "RelativePath": "powerbi/{company}/list-invoice-sql",
     "HttpMethod": "GET",
