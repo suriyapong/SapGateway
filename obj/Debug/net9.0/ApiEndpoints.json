@@ -18,6 +18,33 @@
     ]
   },
   {
+    "ContainingType": "SapGateway.Endpoints.BASSnetSAPEndpoints",
+    "Method": "HandleCreateApInvoice",
+    "RelativePath": "apinvoicebot/{company}/create",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SapGateway.Endpoints.APInvoiceServiceModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
     "Method": "HandleGetInfo",
     "RelativePath": "curencybot/{company}/info",
@@ -68,6 +95,11 @@
     "IsController": false,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.String",
+        "IsRequired": true
+      },
       {
         "Name": "company",
         "Type": "System.String",

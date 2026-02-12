@@ -3,10 +3,18 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using SapGateway.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
 using System.Text;
 using Azure.Core;
 using System.Xml.Linq;
+using SapGateway.Endpoints;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Net.WebRequestMethods;
+using System.Text.Json.Serialization;
+using System.Net.Http.Json;
+using System.Net.Http;
+using System;
 
 namespace SapGateway.Services
 {
@@ -78,13 +86,13 @@ namespace SapGateway.Services
 
         private async Task EnsureLogin(string company)
         {
-            // if (_cache.TryGet(company, out var session))
-            // {
-            //     _http.DefaultRequestHeaders.Remove("Cookie");
-            //     _http.DefaultRequestHeaders.Add("Cookie", $"B1SESSION={session.SessionId}; ROUTEID={session.RouteId}");
+            if (_cache.TryGet(company, out var session))
+            {
+                _http.DefaultRequestHeaders.Remove("Cookie");
+                _http.DefaultRequestHeaders.Add("Cookie", $"B1SESSION={session.SessionId}; ROUTEID={session.RouteId}");
 
-            //     return;
-            // }
+                return;
+            }
             await Login(company);
         }
 
@@ -126,7 +134,84 @@ namespace SapGateway.Services
                 throw new Exception($"[InsertCurrencyData] Error: {ex.Message}", ex);
             }
         }
-        
+
+        public async Task<InvoiceDraftModel> InsertAPInvoiceService(string company, APInvoiceServiceModel request)
+        {
+            InvoiceDraftModel invoiceDraft = new InvoiceDraftModel();
+
+            await EnsureLogin(company);
+
+            string jsonData = JsonConvert.SerializeObject(request);
+            HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            try
+            {
+                var response = await _http.PostAsync("Drafts", content);
+  
+
+                using (response)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Insert A/P Invoice Success");
+                        response.EnsureSuccessStatusCode();
+                        
+                        invoiceDraft = await response.Content.ReadFromJsonAsync<InvoiceDraftModel>();
+
+                        return invoiceDraft;
+                    }
+                    else
+                    {
+                        var respText = await response.Content.ReadAsStringAsync();
+                        throw new Exception($"SAP Insert A/P Invoice Service failed for company {company} ({request.RequriedDate}). " + $"Response: {response.StatusCode} - {respText}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[InsertAPInvoice] Error: {ex.Message}", ex);
+                // ✅ โยนต่อขึ้นไปพร้อมบอกชื่อ service/function
+                throw new Exception($"[InsertAPInvoice] Error: {ex.Message}", ex);
+            }
+        }
+    
+        public async Task<bool> IsApInvoiceDraftExists(string company, string voucherNo)
+        {
+            await EnsureLogin(company);
+
+            string filter = "DocObjectCode eq '18'";
+
+            if (!string.IsNullOrEmpty(voucherNo))
+            {
+                filter += $" and U_PDG_Voucher_No eq '{voucherNo}'";
+            }
+
+            var encodedFilter = Uri.EscapeDataString(filter);
+            var res = await _http.GetAsync($"Drafts?$filter={encodedFilter}");
+
+            if (res.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                _cache.Remove(company);
+                await Login(company);
+                res = await _http.GetAsync($"Drafts?$filter={encodedFilter}");
+            }
+
+            res.EnsureSuccessStatusCode();
+
+            var content = await res.Content.ReadAsStringAsync();
+
+            using var doc = System.Text.Json.JsonDocument.Parse(content);
+            var root = doc.RootElement;
+
+            if (root.TryGetProperty("value", out var valueElement) && valueElement.GetArrayLength() > 0)
+            {
+                return true; // มีเอกสาร
+            }
+
+            return false; // ไม่เจอ
+        }
+
+
         public async Task<string> GetPO(string company, string? poNum)
         {
             await EnsureLogin(company);

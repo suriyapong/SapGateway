@@ -79,8 +79,8 @@ C:\Works\Works_O\001 - Nova Empire\Projects\SapGateway\obj\Debug\net9.0\SapGatew
 C:\Works\Works_O\001 - Nova Empire\Projects\SapGateway\obj\Debug\net9.0\ref\SapGateway.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\SapGateway\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\appsettings.Development.json
-C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.staticwebassets.endpoints.json
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\appsettings.json
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.staticwebassets.endpoints.json
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.exe
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.deps.json
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.runtimeconfig.json
@@ -88,6 +88,7 @@ C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\S
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\SapGateway.pdb
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Azure.Core.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Azure.Identity.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.Bcl.Cryptography.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
@@ -107,6 +108,9 @@ C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\M
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.File.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.Seq.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\System.ClientModel.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\System.Diagnostics.EventLog.dll
@@ -159,7 +163,3 @@ C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\r
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\SapGateway.pdb
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\SapGateway.genruntimeconfig.cache
 C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\obj\Debug\net9.0\ref\SapGateway.dll
-C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.dll
-C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.File.dll
-C:\Works\Works_O\001 - Nova Empire\Projects\GitHub\SapGateway\bin\Debug\net9.0\Serilog.Sinks.Seq.dll
