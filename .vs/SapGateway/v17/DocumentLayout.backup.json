@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\models\\invoicedraftmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:models\\invoicedraftmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\endpoints\\bassnetsapendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\bassnetsapendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\github\\sapgateway\\services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InvoiceDraftModel.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Models\\InvoiceDraftModel.cs",
-              "RelativeDocumentMoniker": "Models\\InvoiceDraftModel.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Models\\InvoiceDraftModel.cs",
-              "RelativeToolTip": "Models\\InvoiceDraftModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T04:18:11.259Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CurencyBotEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\CurencyBotEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T10:00:39.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SapServiceLayerClient.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeDocumentMoniker": "Services\\SapServiceLayerClient.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeToolTip": "Services\\SapServiceLayerClient.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwOEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T12:12:13.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "BASSnetSAPEndpoints.cs",
               "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\BASSnetSAPEndpoints.cs",
               "RelativeDocumentMoniker": "Endpoints\\BASSnetSAPEndpoints.cs",
               "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\Endpoints\\BASSnetSAPEndpoints.cs",
               "RelativeToolTip": "Endpoints\\BASSnetSAPEndpoints.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAB8AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T09:39:24.736Z",
+              "WhenOpened": "2026-02-16T12:09:56.881Z",
               "EditorCaption": ""
             }
           ]

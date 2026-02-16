@@ -15,6 +15,7 @@ using System.Text.Json.Serialization;
 using System.Net.Http.Json;
 using System.Net.Http;
 using System;
+using System.Globalization;
 
 namespace SapGateway.Services
 {
@@ -144,8 +145,7 @@ namespace SapGateway.Services
             string jsonData = JsonConvert.SerializeObject(request);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            try
-            {
+     
                 var response = await _http.PostAsync("Drafts", content);
   
 
@@ -163,52 +163,76 @@ namespace SapGateway.Services
                     else
                     {
                         var respText = await response.Content.ReadAsStringAsync();
-                        throw new Exception($"SAP Insert A/P Invoice Service failed for company {company} ({request.RequriedDate}). " + $"Response: {response.StatusCode} - {respText}");
+                        string sapMessage = respText;
+
+                    try
+                    {
+                        using var doc = JsonDocument.Parse(respText);
+
+                        if (doc.RootElement.TryGetProperty("error", out var errorElement))
+                        {
+                            // ดึง message ตรง ๆ เลย (ใน version คุณ message เป็น string ไม่ใช่ object)
+                            if (errorElement.TryGetProperty("message", out var messageElement))
+                            {
+                                sapMessage = messageElement.GetString();
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // ถ้า parse ไม่ได้ ให้ใช้ raw response
+                    }
+
+                        throw new Exception($"SAP Draft creation failed: {sapMessage}");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[InsertAPInvoice] Error: {ex.Message}", ex);
-                // ✅ โยนต่อขึ้นไปพร้อมบอกชื่อ service/function
-                throw new Exception($"[InsertAPInvoice] Error: {ex.Message}", ex);
-            }
+
         }
     
-        public async Task<bool> IsApInvoiceDraftExists(string company, string voucherNo)
+        public async Task<bool> IsVendorPaymentExists(string company, string cardCode)
         {
             await EnsureLogin(company);
 
-            string filter = "DocObjectCode eq '18'";
+            var filter = Uri.EscapeDataString($"CardCode eq '{cardCode}'");
+            var response = await _http.GetAsync($"VendorPayments?$select=CardCode&$filter={filter}&$top=1");
 
-            if (!string.IsNullOrEmpty(voucherNo))
-            {
-                filter += $" and U_PDG_Voucher_No eq '{voucherNo}'";
-            }
+            response.EnsureSuccessStatusCode();
 
-            var encodedFilter = Uri.EscapeDataString(filter);
-            var res = await _http.GetAsync($"Drafts?$filter={encodedFilter}");
+            using var doc = System.Text.Json.JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+            var value = doc.RootElement.GetProperty("value");
 
-            if (res.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                _cache.Remove(company);
-                await Login(company);
-                res = await _http.GetAsync($"Drafts?$filter={encodedFilter}");
-            }
+            if (value.GetArrayLength() == 0)
+                return false;
 
+            var sapCardCode = value[0].GetProperty("CardCode").GetString();
+
+            return string.Equals(sapCardCode, cardCode, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public async Task<bool> AccountExistsAsync(string company, string accountCode)
+        {
+            await EnsureLogin(company);
+
+            var filter = Uri.EscapeDataString($"Code eq '{accountCode}'");
+
+            var res = await _http.GetAsync($"ChartOfAccounts?$select=Code&$filter={filter}&$top=1");
             res.EnsureSuccessStatusCode();
 
-            var content = await res.Content.ReadAsStringAsync();
+            using var doc = System.Text.Json.JsonDocument.Parse(await res.Content.ReadAsStringAsync());
+            return doc.RootElement.GetProperty("value").GetArrayLength() > 0;
+        }
 
-            using var doc = System.Text.Json.JsonDocument.Parse(content);
-            var root = doc.RootElement;
+        public async Task<bool> VatGroupExistsAsync(string company, string vatGroupCode)
+        {
+            await EnsureLogin(company);
 
-            if (root.TryGetProperty("value", out var valueElement) && valueElement.GetArrayLength() > 0)
-            {
-                return true; // มีเอกสาร
-            }
+            var filter = Uri.EscapeDataString($"Code eq '{vatGroupCode}'");
 
-            return false; // ไม่เจอ
+            var res = await _http.GetAsync($"VatGroups?$select=Code&$filter={filter}&$top=1");
+            res.EnsureSuccessStatusCode();
+
+            using var doc = System.Text.Json.JsonDocument.Parse(await res.Content.ReadAsStringAsync());
+            return doc.RootElement.GetProperty("value").GetArrayLength() > 0;
         }
 
 

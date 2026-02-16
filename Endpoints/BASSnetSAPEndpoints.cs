@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using SapGateway.Models;
 using SapGateway.Services;
 using Serilog;
+using System.Reflection;
 using System.Text;
 using static SapGateway.Models.SAPPurchaseRequestModel;
 
@@ -27,11 +28,30 @@ namespace SapGateway.Endpoints
                 if (body == null) return Results.BadRequest(new { message = "Request body is required" });
 
                 //Step Validation
-                if (await sl.IsApInvoiceDraftExists(company, body.U_PDG_Voucher_No))
+                if (!await sl.IsVendorPaymentExists(company, body.CardCode))
                 {
-                    throw new Exception("Voucher already used.");
+                    throw new InvalidOperationException("Vendor does not exist in SAP.");
                 }
 
+                foreach (var line in body.DocumentLines)
+                {
+                    // ✅ Check Account Code
+                    if (!await sl.AccountExistsAsync(company, line.AccountCode))
+                    {
+                        throw new InvalidOperationException(
+                            $"Account code '{line.AccountCode}' does not exist in SAP."
+                        );
+                    }
+
+                    // ✅ Check Vat Group
+                    if (!string.IsNullOrWhiteSpace(line.VatGroup) &&
+                        !await sl.VatGroupExistsAsync(company, line.VatGroup))
+                    {
+                        throw new InvalidOperationException(
+                            $"VAT Group '{line.VatGroup}' does not exist in SAP."
+                        );
+                    }
+                }
 
                 InvoiceDraftModel invoiceDraft = new InvoiceDraftModel();
                 invoiceDraft = await sl.InsertAPInvoiceService(company, body);
@@ -48,6 +68,7 @@ namespace SapGateway.Endpoints
             }
             catch (Exception ex)
             {
+                //Detail อยากให้ Return Text
                 return Results.Problem(detail: ex.Message, statusCode: 500);
             }
         }
