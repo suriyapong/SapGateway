@@ -1778,11 +1778,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj",
+      "projectUniqueName": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway1\\SapGateway.csproj",
       "projectName": "SapGateway",
-      "projectPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\SapGateway.csproj",
+      "projectPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway1\\SapGateway.csproj",
       "packagesPath": "C:\\Users\\PDG-IT-02\\.nuget\\packages\\",
-      "outputPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway\\obj\\",
+      "outputPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\GitHub\\SapGateway1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
