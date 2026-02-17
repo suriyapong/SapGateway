@@ -142,13 +142,13 @@ namespace SapGateway.Services
 
             await EnsureLogin(company);
 
+            request.DocCurrency = CurrencyMapper.MapToSapCurrency(request.DocCurrency);
+
             string jsonData = JsonConvert.SerializeObject(request);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-     
                 var response = await _http.PostAsync("Drafts", content);
   
-
                 using (response)
                 {
                     if (response.IsSuccessStatusCode)
@@ -188,7 +188,9 @@ namespace SapGateway.Services
                 }
 
         }
-    
+
+
+
         public async Task<bool> IsVendorPaymentExists(string company, string cardCode)
         {
             await EnsureLogin(company);
@@ -252,5 +254,46 @@ namespace SapGateway.Services
             res.EnsureSuccessStatusCode();
             return await res.Content.ReadAsStringAsync();
         }
+
+
+        public static class CurrencyMapper
+        {
+            private static readonly Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                // USD
+                { "USD", "USS" },
+                { "US$", "USS" },
+                { "US DOLLAR", "USS" },
+
+                // EUR
+                { "EUR", "EUS" },
+                { "EURO", "EUS" },
+
+                // SGD
+                { "SGD", "SGS" },
+
+                // MYR
+                { "MYR", "MYS" },
+
+                // GBP
+                { "GBP", "GBP" }
+            };
+
+            public static string MapToSapCurrency(string bassnetCurrency)
+            {
+                if (string.IsNullOrWhiteSpace(bassnetCurrency))
+                    throw new ArgumentException("Currency is required.");
+
+                var normalized = bassnetCurrency.Trim().ToUpper();
+
+                if (_currencyMap.TryGetValue(normalized, out var sapCurrency))
+                    return sapCurrency;
+
+                throw new KeyNotFoundException(
+                    $"Currency '{bassnetCurrency}' is not mapped for SAP."
+                );
+            }
+        }
+
     }
 }

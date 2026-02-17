@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SapGateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7eb312542e21df87bb6c586b0220b6ddf1c24d78")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb5a4c9edaa9551776137a556525096cb41f2218")]
 [assembly: System.Reflection.AssemblyProductAttribute("SapGateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SapGateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
