@@ -24,7 +24,7 @@ namespace SapGateway.Services
         private readonly HttpClient _http;
         private readonly IConfiguration _config;
         private readonly SapSessionCache _cache;
-
+            
         public SapServiceLayerClient(HttpClient http, IConfiguration config, SapSessionCache cache)
         {
             _http = http;
@@ -142,74 +142,29 @@ namespace SapGateway.Services
 
             await EnsureLogin(company);
 
-            request.DocCurrency = CurrencyMapper.MapToSapCurrency(request.DocCurrency);
-
             string jsonData = JsonConvert.SerializeObject(request);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
+    
                 var response = await _http.PostAsync("Drafts", content);
   
-                using (response)
+                if (response.IsSuccessStatusCode)
                 {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine("Insert A/P Invoice Success");
-                        response.EnsureSuccessStatusCode();
-                        
-                        invoiceDraft = await response.Content.ReadFromJsonAsync<InvoiceDraftModel>();
+                    Console.WriteLine("Insert A/P Invoice Success");
+                    response.EnsureSuccessStatusCode();       
+                    invoiceDraft = await response.Content.ReadFromJsonAsync<InvoiceDraftModel>();    
+                }
+                else
+                {
+                    var respText = await response.Content.ReadAsStringAsync();
+                    var sapMessage = ExtractSapMessage(respText);
 
-                        return invoiceDraft;
-                    }
-                    else
-                    {
-                        var respText = await response.Content.ReadAsStringAsync();
-                        string sapMessage = respText;
-
-                        try
-                        {
-                            using var doc = JsonDocument.Parse(respText);
-
-                            if (doc.RootElement.TryGetProperty("error", out var errorElement))
-                            {
-                                if (errorElement.TryGetProperty("message", out var messageElement))
-                                {
-                                    var rawMessage = messageElement.GetString();
-
-                                    if (!string.IsNullOrWhiteSpace(rawMessage) &&
-                                        rawMessage.TrimStart().StartsWith("{"))
-                                    {
-                                        // parse JSON ซ้อน
-                                        using var innerDoc = JsonDocument.Parse(rawMessage);
-
-                                        if (innerDoc.RootElement.TryGetProperty("error", out var innerError) &&
-                                            innerError.TryGetProperty("message", out var innerMessage) &&
-                                            innerMessage.TryGetProperty("value", out var valueElement))
-                                        {
-                                            sapMessage = valueElement.GetString();
-                                        }
-                                        else
-                                        {
-                                            sapMessage = rawMessage;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        sapMessage = rawMessage;
-                                    }
-                                }
-                            }
-                        }
-                        catch
-                        {
-                            // ถ้า parse ไม่ได้ ให้ใช้ raw response
-                        }
-
-                        throw new Exception($"SAP Draft creation failed: {sapMessage}");
-                    }
+                    throw new Exception($"SAP Draft creation failed: {sapMessage}");
                 }
 
+                return invoiceDraft;
+            
         }
-
 
 
         public async Task<bool> IsVendorPaymentExists(string company, string cardCode)
@@ -276,46 +231,34 @@ namespace SapGateway.Services
             return await res.Content.ReadAsStringAsync();
         }
 
-
-        public static class CurrencyMapper
+        private static string ExtractSapMessage(string respText)
         {
-            private static readonly Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            try
             {
-                { "THB", "THB" },
-                // USD
-                { "USD", "USS" },
-                { "US$", "USS" },
-                { "US DOLLAR", "USS" },
+                using var doc = JsonDocument.Parse(respText);
 
-                // EUR
-                { "EUR", "EUS" },
-                { "EURO", "EUS" },
+                var message = doc.RootElement
+                    .GetProperty("error")
+                    .GetProperty("message")
+                    .GetString();
 
-                // SGD
-                { "SGD", "SGS" },
+                if (message?.TrimStart().StartsWith("{") == true)
+                {
+                    using var inner = JsonDocument.Parse(message);
 
-                // MYR
-                { "MYR", "MYS" },
+                    return inner.RootElement
+                        .GetProperty("error")
+                        .GetProperty("message")
+                        .GetProperty("value")
+                        .GetString() ?? message;
+                }
 
-                // GBP
-                { "GBP", "GBP" }
-            };
-
-            public static string MapToSapCurrency(string bassnetCurrency)
+                return message ?? respText;
+            }
+            catch
             {
-                if (string.IsNullOrWhiteSpace(bassnetCurrency))
-                    throw new ArgumentException("Currency is required.");
-
-                var normalized = bassnetCurrency.Trim().ToUpper();
-
-                if (_currencyMap.TryGetValue(normalized, out var sapCurrency))
-                    return sapCurrency;
-
-                throw new KeyNotFoundException(
-                    $"Currency '{bassnetCurrency}' is not mapped for SAP."
-                );
+                return respText;
             }
         }
-
     }
 }

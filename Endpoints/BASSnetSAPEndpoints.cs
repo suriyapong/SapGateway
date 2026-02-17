@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.IdentityModel.Tokens;
 using SapGateway.Models;
 using SapGateway.Services;
@@ -54,6 +55,8 @@ namespace SapGateway.Endpoints
                 }
 
                 InvoiceDraftModel invoiceDraft = new InvoiceDraftModel();
+                body.DocCurrency = MapToSapCurrency(body.DocCurrency);
+
                 invoiceDraft = await sl.InsertAPInvoiceService(company, body);
 
                 seqLog.LogInfo("Currency update executed successfully", new
@@ -72,6 +75,44 @@ namespace SapGateway.Endpoints
                 return Results.Problem(detail: ex.Message, statusCode: 500);
             }
         }
+
+ 
+
+            public static string MapToSapCurrency(string bassnetCurrency)
+            {
+                Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                {
+                    // ===== USD =====
+                    { "USD", "USS" },
+                    { "US$", "USS" },
+                    { "US DOLLAR", "USS" },
+
+                    // ===== EUR =====
+                    { "EUR", "EUS" },
+                    { "EURO", "EUS" },
+
+                    // ===== SGD =====
+                    { "SGD", "SGS" },
+
+                    // ===== MYR =====
+                    { "MYR", "MYS" },
+
+                    // ===== GBP =====
+                    { "GBP", "GBP" }
+                };
+
+                if (string.IsNullOrWhiteSpace(bassnetCurrency))
+                    throw new ArgumentException("Currency is required.");
+
+                    var normalized = bassnetCurrency.Trim().ToUpper();
+
+                    if (_currencyMap.TryGetValue(normalized, out var sapCurrency))
+                        return sapCurrency;
+
+                    throw new KeyNotFoundException(
+                        $"Currency '{bassnetCurrency}' is not mapped for SAP."
+                );
+            }
     }
 
     public class APInvoiceServiceModel
@@ -100,5 +141,4 @@ namespace SapGateway.Endpoints
         public string VatGroup { get; set; } //"PNV", //TAX Code
         public string ItemDescription { get; set; }
     }
-
 }
