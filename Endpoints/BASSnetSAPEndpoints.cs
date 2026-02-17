@@ -78,41 +78,120 @@ namespace SapGateway.Endpoints
 
  
 
-            public static string MapToSapCurrency(string bassnetCurrency)
+        public static string MapToSapCurrency(string bassnetCurrency)
+        {
+            Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-                {
-                    // ===== USD =====
-                    { "USD", "USS" },
-                    { "US$", "USS" },
-                    { "US DOLLAR", "USS" },
+                // ===== USD =====
+                { "USD", "USS" },
+                { "US$", "USS" },
+                { "US DOLLAR", "USS" },
+                { "U.S. DOLLAR", "USS" },
+                { "840", "USS" },
 
-                    // ===== EUR =====
-                    { "EUR", "EUS" },
-                    { "EURO", "EUS" },
+                // ===== EUR =====
+                { "EUR", "EUS" },
+                { "EURO", "EUS" },
+                { "978", "EUS" },
 
-                    // ===== SGD =====
-                    { "SGD", "SGS" },
+                // ===== GBP =====
+                { "GBP", "GBP" },
+                { "POUND", "GBP" },
+                { "826", "GBP" },
 
-                    // ===== MYR =====
-                    { "MYR", "MYS" },
+                // ===== SGD =====
+                { "SGD", "SGS" },
+                { "SINGAPORE DOLLAR", "SGS" },
+                { "702", "SGS" },
 
-                    // ===== GBP =====
-                    { "GBP", "GBP" }
-                };
+                // ===== MYR =====
+                { "MYR", "MYS" },
+                { "MALAYSIAN RINGGIT", "MYS" },
+                { "458", "MYS" },
 
-                if (string.IsNullOrWhiteSpace(bassnetCurrency))
-                    throw new ArgumentException("Currency is required.");
+                // ===== THB =====
+                { "THB", "THB" },
+                { "THAI BAHT", "THB" },
+                { "764", "THB" },
 
-                    var normalized = bassnetCurrency.Trim().ToUpper();
+                // ===== JPY =====
+                { "JPY", "JPY" },
+                { "JAPANESE YEN", "JPY" },
+                { "392", "JPY" },
 
-                    if (_currencyMap.TryGetValue(normalized, out var sapCurrency))
-                        return sapCurrency;
+                // ===== CNY =====
+                { "CNY", "CNY" },
+                { "RMB", "CNY" },
+                { "156", "CNY" },
 
-                    throw new KeyNotFoundException(
-                        $"Currency '{bassnetCurrency}' is not mapped for SAP."
-                );
-            }
+                // ===== HKD =====
+                { "HKD", "HKD" },
+                { "344", "HKD" },
+
+                // ===== AUD =====
+                { "AUD", "AUD" },
+                { "036", "AUD" },
+
+                // ===== NZD =====
+                { "NZD", "NZD" },
+                { "554", "NZD" },
+
+                // ===== CHF =====
+                { "CHF", "CHF" },
+                { "756", "CHF" },
+
+                // ===== CAD =====
+                { "CAD", "CAD" },
+                { "124", "CAD" },
+
+                // ===== IDR =====
+                { "IDR", "IDR" },
+                { "360", "IDR" },
+
+                // ===== VND =====
+                { "VND", "VND" },
+                { "704", "VND" },
+
+                // ===== PHP =====
+                { "PHP", "PHP" },
+                { "608", "PHP" },
+
+                // ===== KRW =====
+                { "KRW", "KRW" },
+                { "410", "KRW" },
+
+                // ===== INR =====
+                { "INR", "INR" },
+                { "356", "INR" },
+
+                // ===== ZAR =====
+                { "ZAR", "ZAR" },
+                { "710", "ZAR" },
+
+                // ===== AED =====
+                { "AED", "AED" },
+                { "784", "AED" },
+
+                // ===== SAR =====
+                { "SAR", "SAR" },
+                { "682", "SAR" },
+
+                // ===== QAR =====
+                { "QAR", "QAR" },
+                { "634", "QAR" }
+            };
+
+            if (string.IsNullOrWhiteSpace(bassnetCurrency))
+                throw new ArgumentException("Currency is required.");
+
+                var normalized = bassnetCurrency.Trim().ToUpper();
+
+                if (_currencyMap.TryGetValue(normalized, out var sapCurrency))
+                    return sapCurrency;
+
+                    throw new KeyNotFoundException($"Currency '{bassnetCurrency}' is not mapped for SAP."
+            );
+        }
     }
 
     public class APInvoiceServiceModel
