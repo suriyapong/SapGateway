@@ -1,2 +1,1 @@
-URL Build image (portainer)
 https://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@github.com/suriyapong/SapGateway.git
