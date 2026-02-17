@@ -165,23 +165,44 @@ namespace SapGateway.Services
                         var respText = await response.Content.ReadAsStringAsync();
                         string sapMessage = respText;
 
-                    try
-                    {
-                        using var doc = JsonDocument.Parse(respText);
-
-                        if (doc.RootElement.TryGetProperty("error", out var errorElement))
+                        try
                         {
-                            // ดึง message ตรง ๆ เลย (ใน version คุณ message เป็น string ไม่ใช่ object)
-                            if (errorElement.TryGetProperty("message", out var messageElement))
+                            using var doc = JsonDocument.Parse(respText);
+
+                            if (doc.RootElement.TryGetProperty("error", out var errorElement))
                             {
-                                sapMessage = messageElement.GetString();
+                                if (errorElement.TryGetProperty("message", out var messageElement))
+                                {
+                                    var rawMessage = messageElement.GetString();
+
+                                    if (!string.IsNullOrWhiteSpace(rawMessage) &&
+                                        rawMessage.TrimStart().StartsWith("{"))
+                                    {
+                                        // parse JSON ซ้อน
+                                        using var innerDoc = JsonDocument.Parse(rawMessage);
+
+                                        if (innerDoc.RootElement.TryGetProperty("error", out var innerError) &&
+                                            innerError.TryGetProperty("message", out var innerMessage) &&
+                                            innerMessage.TryGetProperty("value", out var valueElement))
+                                        {
+                                            sapMessage = valueElement.GetString();
+                                        }
+                                        else
+                                        {
+                                            sapMessage = rawMessage;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        sapMessage = rawMessage;
+                                    }
+                                }
                             }
                         }
-                    }
-                    catch
-                    {
-                        // ถ้า parse ไม่ได้ ให้ใช้ raw response
-                    }
+                        catch
+                        {
+                            // ถ้า parse ไม่ได้ ให้ใช้ raw response
+                        }
 
                         throw new Exception($"SAP Draft creation failed: {sapMessage}");
                     }
@@ -260,6 +281,7 @@ namespace SapGateway.Services
         {
             private static readonly Dictionary<string, string> _currencyMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
+                { "THB", "THB" },
                 // USD
                 { "USD", "USS" },
                 { "US$", "USS" },
