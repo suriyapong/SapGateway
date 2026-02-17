@@ -237,28 +237,46 @@ namespace SapGateway.Services
             {
                 using var doc = JsonDocument.Parse(respText);
 
-                var message = doc.RootElement
-                    .GetProperty("error")
-                    .GetProperty("message")
-                    .GetString();
+                var error = doc.RootElement.GetProperty("error");
+                var messageElement = error.GetProperty("message");
 
-                if (message?.TrimStart().StartsWith("{") == true)
+                // กรณี message เป็น object (Production case)
+                if (messageElement.ValueKind == JsonValueKind.Object)
                 {
-                    using var inner = JsonDocument.Parse(message);
-
-                    return inner.RootElement
-                        .GetProperty("error")
-                        .GetProperty("message")
-                        .GetProperty("value")
-                        .GetString() ?? message;
+                    if (messageElement.TryGetProperty("value", out var valueProp))
+                    {
+                        return valueProp.GetString() ?? respText;
+                    }
                 }
 
-                return message ?? respText;
+                // กรณี message เป็น string (บาง environment)
+                if (messageElement.ValueKind == JsonValueKind.String)
+                {
+                    var message = messageElement.GetString();
+
+                    // เผื่อมันเป็น JSON string ซ้อนอีกชั้น
+                    if (!string.IsNullOrWhiteSpace(message) &&
+                        message.TrimStart().StartsWith("{"))
+                    {
+                        using var inner = JsonDocument.Parse(message);
+
+                        return inner.RootElement
+                            .GetProperty("error")
+                            .GetProperty("message")
+                            .GetProperty("value")
+                            .GetString() ?? message;
+                    }
+
+                    return message ?? respText;
+                }
+
+                return respText;
             }
             catch
             {
                 return respText;
             }
         }
+
     }
 }
