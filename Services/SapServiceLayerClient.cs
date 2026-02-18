@@ -145,25 +145,23 @@ namespace SapGateway.Services
             string jsonData = JsonConvert.SerializeObject(request);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-    
-                var response = await _http.PostAsync("Drafts", content);
+            var response = await _http.PostAsync("Drafts", content);
   
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("Insert A/P Invoice Success");
-                    response.EnsureSuccessStatusCode();       
-                    invoiceDraft = await response.Content.ReadFromJsonAsync<InvoiceDraftModel>();    
-                }
-                else
-                {
-                    var respText = await response.Content.ReadAsStringAsync();
-                    var sapMessage = ExtractSapMessage(respText);
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Insert A/P Invoice Success");
+                response.EnsureSuccessStatusCode();       
+                invoiceDraft = await response.Content.ReadFromJsonAsync<InvoiceDraftModel>();    
+            }
+            else
+            {
+                var respText = await response.Content.ReadAsStringAsync();
+                var sapMessage = ExtractSapMessage(respText);
 
-                    throw new Exception($"SAP Draft creation failed: {sapMessage}");
-                }
+                throw new Exception($"SAP Draft creation failed: {sapMessage}");
+            }
 
-                return invoiceDraft;
-            
+            return invoiceDraft;
         }
 
 
@@ -172,7 +170,7 @@ namespace SapGateway.Services
             await EnsureLogin(company);
 
             var filter = Uri.EscapeDataString($"CardCode eq '{cardCode}'");
-            var response = await _http.GetAsync($"VendorPayments?$select=CardCode&$filter={filter}&$top=1");
+            var response = await _http.GetAsync($"BusinessPartners?$select=CardCode&$filter={filter}&$top=1");
 
             response.EnsureSuccessStatusCode();
 

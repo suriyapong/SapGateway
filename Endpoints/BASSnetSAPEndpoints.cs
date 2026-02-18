@@ -196,12 +196,9 @@ namespace SapGateway.Endpoints
 
     public class APInvoiceServiceModel
     {
-        //Key Vendor Code + Invoice
-        // ===== Header =====
-        public string U_PDG_Voucher_No { get; set; } //Key
+        //Key Vendor Code + Invoice Vendor
         public string CardCode { get; set; }
         public DateTime DocDate { get; set; }
-        public DateTime RequriedDate { get; set; }
         public string DocType { get; set; } //dDocument_Service หรือ dDocument_Items ถ้าไม่ใส่จะ Default dDocument_Items, 
         public string Comments { get; set; }
         public string DocCurrency { get; set; } //ใส่ SAP ต้องมีอัตราแลกเปลี่ยนนนี้ด้วย
