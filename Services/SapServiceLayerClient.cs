@@ -16,6 +16,7 @@ using System.Net.Http.Json;
 using System.Net.Http;
 using System;
 using System.Globalization;
+using Azure;
 
 namespace SapGateway.Services
 {
@@ -212,21 +213,39 @@ namespace SapGateway.Services
         }
 
 
-        public async Task<string> GetPO(string company, string? poNum)
+        public async Task<SAPResponse<SAPPurchaseOrderModel>> GetPurchaseOrderByDocNum(string company, int docNum)
         {
-            await EnsureLogin(company);
-            string filter = string.IsNullOrEmpty(poNum) ? "" : $"?$filter=DocNum eq {poNum}";
-            var res = await _http.GetAsync($"PurchaseOrders{filter}");
-
-            if (res.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            try
             {
-                _cache.Remove(company);
-                await Login(company);
-                res = await _http.GetAsync($"PurchaseOrders{filter}");
-            }
+                await EnsureLogin(company);
 
-            res.EnsureSuccessStatusCode();
-            return await res.Content.ReadAsStringAsync();
+                string url = $"PurchaseOrders?$filter=DocNum eq {docNum}";
+                var response = await _http.GetAsync(url);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var sapMsg = ExtractSapMessage(raw);
+                    throw new Exception(sapMsg);
+                }
+
+
+                var data = await response.Content.ReadFromJsonAsync<SAPResponse<SAPPurchaseOrderModel>>();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw; 
+            }
         }
 
         private static string ExtractSapMessage(string respText)

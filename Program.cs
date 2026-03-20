@@ -40,6 +40,7 @@ app.MapPowerBiEndpoints();
 app.MapWebPrEndpoints();
 app.MapCurencyBotEndpoints();
 app.MapApInvoiceBotEndpoints();
+app.MapPurchaseOrderEndpoints();
 
 app.MapGet("/", () => "SAP Gateway API Running...");
 

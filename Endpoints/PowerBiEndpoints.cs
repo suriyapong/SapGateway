@@ -11,11 +11,6 @@ namespace SapGateway.Endpoints
         {
             var group = app.MapGroup("/powerbi/{company}");
 
-            // Service Layer endpoints
-            group.MapGet("/list-po", async (string company, SapServiceLayerClient sl) =>
-                await HandleGetPurchaseOrders(company, sl))
-                .WithName("GetPurchaseOrders")
-                .WithTags("PowerBi");
 
             // SQL-based endpoints
             group.MapGet("/list-po-sql", async (string company, SapSqlConnect sql) =>
@@ -34,21 +29,6 @@ namespace SapGateway.Endpoints
                 .WithTags("PowerBi");
         }
 
-        // -----------------------------
-        // Service Layer Handlers
-        // -----------------------------
-        private static async Task<IResult> HandleGetPurchaseOrders(string company, SapServiceLayerClient sl)
-        {
-            try
-            {
-                var jsonData = await sl.GetPO(company, null);
-                return Results.Content(jsonData, "application/json");
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(detail: ex.Message, statusCode: 500);
-            }
-        }
 
         // -----------------------------
         // SQL Handlers

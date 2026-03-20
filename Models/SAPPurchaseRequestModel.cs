@@ -17,6 +17,11 @@ namespace SapGateway.Models
         public DateTime RequriedDate { get; set; }
         public List<DocumentLine> DocumentLines { get; set; }
 
+        public static implicit operator SAPPurchaseRequestModel(SAPPurchaseOrderModel v)
+        {
+            throw new NotImplementedException();
+        }
+
         public class DocumentLine
         {
             public string ItemCode { get; set; }

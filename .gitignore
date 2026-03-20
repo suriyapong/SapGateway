@@ -5,6 +5,14 @@ bin/
 obj/
 out/
 publish/
+artifacts/
+
+#######################################
+# .NET
+#######################################
+*.runtimeconfig.dev.json
+*.deps.json
+*.runtimeconfig.json
 
 #######################################
 # Visual Studio
@@ -14,6 +22,10 @@ publish/
 *.suo
 *.userosscache
 *.sln.docstates
+*.cache
+*.pdb
+*.ipch
+*.aps
 
 #######################################
 # Rider
@@ -22,21 +34,26 @@ publish/
 *.sln.iml
 
 #######################################
-# VS Code
+# VS Code (keep shared config)
 #######################################
-.vscode/
-.history/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
 
 #######################################
 # Logs
 #######################################
 *.log
 logs/
+log/
 
 #######################################
-# ASP.NET Scaffolding
+# ASP.NET / IIS Express
 #######################################
-ScaffoldingReadMe.txt
+iisexpress/
+*.vspscc
+*.vssscc
 
 #######################################
 # Resharper
@@ -49,29 +66,40 @@ _ReSharper*/
 #######################################
 *.nupkg
 *.snupkg
-.nuget/
 packages/
+.nuget/
 
 #######################################
-# Publish Output
+# Publish / Deployment
 #######################################
 *.Publish.xml
 *.pubxml
 *.publishproj
+*.azurePubxml
 
 #######################################
 # Secrets / Environment
 #######################################
-appsettings.Development.json
-appsettings.Local.json
+appsettings.*.json
+!appsettings.json
 .env
 .env.*
+secrets.json
 
 #######################################
-# OS Files
+# Blazor / Static build
 #######################################
-.DS_Store
-Thumbs.db
+wwwroot/dist/
+wwwroot/build/
+wwwroot/_framework/
+
+#######################################
+# Node (ถ้ามี frontend หรือใช้ tooling)
+#######################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 #######################################
 # Test Results
@@ -82,17 +110,21 @@ TestResults/
 *.coveragexml
 
 #######################################
-# Azure
+# OS Files
 #######################################
-.publishsettings
-
-#######################################
-# Blazor WASM
-#######################################
-wwwroot/dist/
-wwwroot/build/
+.DS_Store
+Thumbs.db
+desktop.ini
 
 #######################################
 # Docker
 #######################################
 docker-compose.override.yml
+
+#######################################
+# Misc
+#######################################
+*.tmp
+*.temp
+*.bak
+*.swp
