@@ -239,34 +239,46 @@ namespace SapGateway.Services
 
                 var data = await response.Content.ReadFromJsonAsync<SAPResponse<SAPPurchaseOrderModel>>();
 
+                var first = data?.value?.FirstOrDefault();
+
                 //Get Document Owner
-                var documentsOwner = data.value[0].DocumentsOwner;
-                string urlDocOwner = $"EmployeesInfo(" + documentsOwner  + ")";
-                var responseDocOwner = await _http.GetAsync(urlDocOwner);
-                var rawDocOwner = await responseDocOwner.Content.ReadFromJsonAsync<DocumentOwnerModel> ();
-                data.value[0].DocOwnerFirstName = rawDocOwner.FirstName;
-                data.value[0].DocOwnerLastName = rawDocOwner.LastName;
-                data.value[0].DocOwnerMobilePhone = rawDocOwner.MobilePhone;
-                data.value[0].DocOwnereMail = rawDocOwner.eMail;
+                if (first != null && !string.IsNullOrEmpty(first.DocumentsOwner?.ToString()))
+                {
+                    var documentsOwner = data.value[0].DocumentsOwner;
+                    string urlDocOwner = $"EmployeesInfo(" + documentsOwner + ")";
+                    var responseDocOwner = await _http.GetAsync(urlDocOwner);
+                    var rawDocOwner = await responseDocOwner.Content.ReadFromJsonAsync<DocumentOwnerModel>();
+                    data.value[0].DocOwnerFirstName = rawDocOwner.FirstName;
+                    data.value[0].DocOwnerLastName = rawDocOwner.LastName;
+                    data.value[0].DocOwnerMobilePhone = rawDocOwner.MobilePhone;
+                    data.value[0].DocOwnereMail = rawDocOwner.eMail;
+                }
 
                 //Get Vendor
-                var vendorCode = data.value[0].CardCode;
-                string urlVendor = $"BusinessPartners('" + vendorCode + "')";
-                var responseVendor = await _http.GetAsync(urlVendor);
-                ContactEmployeesModel rawVendor = new ContactEmployeesModel();
-                rawVendor = await responseVendor.Content.ReadFromJsonAsync<ContactEmployeesModel>();
-                data.value[0].VendorContactFirstName = rawVendor.ContactEmployees[0].FirstName;
-                data.value[0].VendorContactLastName = rawVendor.ContactEmployees[0].LastName;
-                data.value[0].VendorContactPhone1 = rawVendor.ContactEmployees[0].Phone1;
-                data.value[0].VendorContactE_Mail = rawVendor.ContactEmployees[0].E_Mail;
-
+                if (first != null && !string.IsNullOrEmpty(first.CardCode?.ToString()))
+                {
+                    var vendorCode = data.value[0].CardCode;
+                    string urlVendor = $"BusinessPartners('" + vendorCode + "')";
+                    var responseVendor = await _http.GetAsync(urlVendor);
+                    ContactEmployeesModel rawVendor = new ContactEmployeesModel();
+                    rawVendor = await responseVendor.Content.ReadFromJsonAsync<ContactEmployeesModel>();
+                    data.value[0].VendorContactFirstName = rawVendor.ContactEmployees[0].FirstName;
+                    data.value[0].VendorContactLastName = rawVendor.ContactEmployees[0].LastName;
+                    data.value[0].VendorContactPhone1 = rawVendor.ContactEmployees[0].Phone1;
+                    data.value[0].VendorContactE_Mail = rawVendor.ContactEmployees[0].E_Mail;
+                    data.value[0].VendorAddress = rawVendor.Address;
+                    data.value[0].VendorBlock = rawVendor.Block;
+                }
 
                 //Get Payment Terms Types
-                var paymentGroup = data.value[0].PaymentGroupCode;
-                string urlPaymentGroup = $"PaymentTermsTypes(" + paymentGroup + ")";
-                var responsePaymentGroup = await _http.GetAsync(urlPaymentGroup);
-                var rawPaymentGroup = await responsePaymentGroup.Content.ReadFromJsonAsync<PaymentGroupModel>();
-                data.value[0].PaymentTermsGroupName = rawPaymentGroup.PaymentTermsGroupName;
+                if (first != null && !string.IsNullOrEmpty(first.PaymentGroupCode?.ToString()))
+                {
+                    var paymentGroup = data.value[0].PaymentGroupCode;
+                    string urlPaymentGroup = $"PaymentTermsTypes(" + paymentGroup + ")";
+                    var responsePaymentGroup = await _http.GetAsync(urlPaymentGroup);
+                    var rawPaymentGroup = await responsePaymentGroup.Content.ReadFromJsonAsync<PaymentGroupModel>();
+                    data.value[0].PaymentTermsGroupName = rawPaymentGroup.PaymentTermsGroupName;
+                }
 
                 return data;
             }

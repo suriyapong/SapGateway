@@ -27,6 +27,8 @@ namespace SapGateway.Models
         public string? VendorContactLastName { get; set; }
         public string? VendorContactPhone1 { get; set; }
         public string? VendorContactE_Mail { get; set; }
+        public string? VendorAddress { get; set; }
+        public string? VendorBlock { get; set; }
 
         public string? NumAtCard { get; set; }
 
@@ -63,6 +65,8 @@ namespace SapGateway.Models
         public string? PaymentTermsGroupName { get; set; }
 
         public List<PODocumentLine>? DocumentLines { get; set; }
+        
+        public AddressExtension AddressExtension { get; set; }
     }
 
     public class PODocumentLine
@@ -113,6 +117,11 @@ namespace SapGateway.Models
         public DateTime U_Date_of_payment_plan { get; set; }
     }
 
+    public class AddressExtension
+    {
+        public string ShipToStreet { get; set; }
+        public string ShipToGlobalLocationNumber { get; set; }
+    }
 
     public class DocumentOwnerModel
     {
@@ -122,9 +131,10 @@ namespace SapGateway.Models
         public string eMail { get; set; }
     }
 
-
     public class ContactEmployeesModel
     {
+        public string Address { get; set; }
+        public string Block { get; set; }
         public List<ContactEmployees>? ContactEmployees { get; set; } 
     }
     
@@ -134,6 +144,7 @@ namespace SapGateway.Models
         public string LastName { get; set; }
         public string Phone1 { get; set; }
         public string E_Mail { get; set; }
+
     }
 
     public class PaymentGroupModel
