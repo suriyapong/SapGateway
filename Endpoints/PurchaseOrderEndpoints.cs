@@ -30,7 +30,6 @@ namespace SapGateway.Endpoints
 
                 SAPResponse<SAPPurchaseOrderModel> po = new SAPResponse<SAPPurchaseOrderModel>();
                 po = await sl.GetPurchaseOrderByDocNum(company, docNum);
-
                 return Results.Ok(new { Message = $"Get Purchase order company : {company}", data = po.value});
             }
             catch (Exception ex)

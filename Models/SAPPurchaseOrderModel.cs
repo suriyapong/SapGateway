@@ -23,6 +23,10 @@ namespace SapGateway.Models
 
         public string? CardCode { get; set; }
         public string? CardName { get; set; }
+        public string? VendorContactFirstName { get; set; }
+        public string? VendorContactLastName { get; set; }
+        public string? VendorContactPhone1 { get; set; }
+        public string? VendorContactE_Mail { get; set; }
 
         public string? NumAtCard { get; set; }
 
@@ -35,10 +39,29 @@ namespace SapGateway.Models
 
         public string? DocumentStatus { get; set; }
 
-        // SAP = tYES/tNO
         public string? Confirmed { get; set; }
 
-        // 🔥 สำคัญ
+        public string? U_DERIVERY_TERM { get; set; }
+        public string? FederalTaxID { get; set; }
+        public string? U_Base_on_Purchase_Material_Requisition { get; set; }
+        public int? DataVersion { get; set; }
+        public string? U_CONDITION_OF_DELIVERY { get; set; }
+
+        public string? U_GTSC_of_Materials { get; set; }
+        public string? U_GTSC_of_Service { get; set; }
+        public string? U_Payment_duw { get; set; }
+        public string? U_Vender_Bank_Details { get; set; }
+        public string? U_TERM_OF_PAYMENT { get; set; }
+
+        public int? DocumentsOwner { get; set; }
+        public string? DocOwnerFirstName { get; set; }
+        public string? DocOwnerLastName { get; set; }
+        public string? DocOwnerMobilePhone { get; set; }
+        public string? DocOwnereMail { get; set; }
+
+        public int? PaymentGroupCode { get; set; }
+        public string? PaymentTermsGroupName { get; set; }
+
         public List<PODocumentLine>? DocumentLines { get; set; }
     }
 
@@ -88,5 +111,34 @@ namespace SapGateway.Models
         public int NCMCode { get; set; }
         public double U_HMC_Minute { get; set; }
         public DateTime U_Date_of_payment_plan { get; set; }
+    }
+
+
+    public class DocumentOwnerModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobilePhone { get; set; }
+        public string eMail { get; set; }
+    }
+
+
+    public class ContactEmployeesModel
+    {
+        public List<ContactEmployees>? ContactEmployees { get; set; } 
+    }
+    
+    public class ContactEmployees
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone1 { get; set; }
+        public string E_Mail { get; set; }
+    }
+
+    public class PaymentGroupModel
+    {
+        public int GroupNumber { get; set; }
+        public string PaymentTermsGroupName { get; set; }
     }
 }

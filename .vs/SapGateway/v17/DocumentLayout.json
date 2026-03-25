@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\sapgateway.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:sapgateway.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\powerbiendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\models\\sappurchaseordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:models\\sappurchaseordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\endpoints\\purchaseorderendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,52 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SapGateway",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\SapGateway.csproj",
-              "RelativeDocumentMoniker": "SapGateway.csproj",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\SapGateway.csproj",
-              "RelativeToolTip": "SapGateway.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-20T11:33:23.944Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PowerBiEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\PowerBiEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PowerBiEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\PowerBiEndpoints.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T11:31:43.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PurchaseOrderEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PurchaseOrderEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\PurchaseOrderEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PurchaseOrderEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\PurchaseOrderEndpoints.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T10:22:36.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "SapServiceLayerClient.cs",
               "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
               "RelativeDocumentMoniker": "Services\\SapServiceLayerClient.cs",
               "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
               "RelativeToolTip": "Services\\SapServiceLayerClient.cs",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAkwPAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAmwAwBAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T10:38:30.391Z",
+              "WhenOpened": "2026-03-25T03:57:33.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SAPPurchaseOrderModel.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Models\\SAPPurchaseOrderModel.cs",
+              "RelativeDocumentMoniker": "Models\\SAPPurchaseOrderModel.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Models\\SAPPurchaseOrderModel.cs",
+              "RelativeToolTip": "Models\\SAPPurchaseOrderModel.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAmwIoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T03:55:29.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PurchaseOrderEndpoints.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PurchaseOrderEndpoints.cs",
+              "RelativeDocumentMoniker": "Endpoints\\PurchaseOrderEndpoints.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\PurchaseOrderEndpoints.cs",
+              "RelativeToolTip": "Endpoints\\PurchaseOrderEndpoints.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T10:22:36.439Z",
               "EditorCaption": ""
             }
           ]
