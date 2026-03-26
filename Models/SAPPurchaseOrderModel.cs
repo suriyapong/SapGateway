@@ -58,6 +58,8 @@ namespace SapGateway.Models
         public int? DocumentsOwner { get; set; }
         public string? DocOwnerFirstName { get; set; }
         public string? DocOwnerLastName { get; set; }
+        public string? DocOwnerOfficePhone { get; set; }
+        public string? DocOwnerOfficeExtension { get; set; }
         public string? DocOwnerMobilePhone { get; set; }
         public string? DocOwnereMail { get; set; }
 
@@ -127,6 +129,8 @@ namespace SapGateway.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string OfficePhone { get; set; }
+        public string OfficeExtension { get; set; }
         public string MobilePhone { get; set; }
         public string eMail { get; set; }
     }

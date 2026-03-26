@@ -250,6 +250,8 @@ namespace SapGateway.Services
                     var rawDocOwner = await responseDocOwner.Content.ReadFromJsonAsync<DocumentOwnerModel>();
                     data.value[0].DocOwnerFirstName = rawDocOwner.FirstName;
                     data.value[0].DocOwnerLastName = rawDocOwner.LastName;
+                    data.value[0].DocOwnerOfficePhone = rawDocOwner.OfficePhone;
+                    data.value[0].DocOwnerOfficeExtension  = rawDocOwner.OfficeExtension;
                     data.value[0].DocOwnerMobilePhone = rawDocOwner.MobilePhone;
                     data.value[0].DocOwnereMail = rawDocOwner.eMail;
                 }
