@@ -37,10 +37,11 @@ app.UseMiddleware<TokenAuthMiddleware>(); // ? ��Ǩ token ��͹�֧ endp
 
 // Map endpoints
 app.MapPowerBiEndpoints();
-app.MapWebPrEndpoints();
 app.MapCurencyBotEndpoints();
 app.MapApInvoiceBotEndpoints();
 app.MapPurchaseOrderEndpoints();
+app.MapBudgetEndpoints();
+app.MapPurchaseRequestEndpoints();
 
 app.MapGet("/", () => "SAP Gateway API Running...");
 

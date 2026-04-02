@@ -11,9 +11,12 @@ namespace SapGateway.Models
         public string AcctCode { get; set; }
         public string AcctName { get; set; }
         public string OcrCode { get; set; }
-        public double BudgetTotal { get; set; }
-        public string TransTypeName { get; set; }
-        public string DocNumber { get; set; }
-        public double SumTotal { get; set; }
+        public double PRDraft { get; set; }
+        public double PR { get; set; }
+        public double PODraft { get; set; }
+        public double PO { get; set; }
+        public double GRPO { get; set; }
+        public double AP { get; set; }
+        public double Accounting { get; set; }
     }
 }

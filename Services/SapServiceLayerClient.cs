@@ -17,6 +17,11 @@ using System.Net.Http;
 using System;
 using System.Globalization;
 using Azure;
+using Microsoft.Data.SqlClient;
+using System.Data;
+using Dapper;
+using System.Net;
+using Microsoft.VisualBasic;
 
 namespace SapGateway.Services
 {
@@ -291,6 +296,60 @@ namespace SapGateway.Services
             }
         }
 
+        public async Task<PurchaseRequestDraftModel> InsertPurchaseRequest(string company, SAPPurchaseRequestModel body)
+        {
+            PurchaseRequestDraftModel result = new PurchaseRequestDraftModel();
+
+            try
+            {
+                await EnsureLogin(company);
+
+                string jsonData = JsonConvert.SerializeObject(body);
+                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                var response = await _http.PostAsync(body.DocumentType, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    response.EnsureSuccessStatusCode();
+                    result = await response.Content.ReadFromJsonAsync<PurchaseRequestDraftModel>();
+                }
+                else
+                {
+                    var respText = await response.Content.ReadAsStringAsync();
+                    var sapMessage = ExtractSapMessage(respText);
+
+                    throw new Exception($"SAP Draft creation failed: {sapMessage}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[PostDataPurchaseRequest ERROR] {ex.Message}");
+                throw new Exception(ex.Message);
+            }
+
+            return result;
+        }
+
+        //Private Zone
+        private Dictionary<string, string> SellCurrencies = new Dictionary<string, string>
+        {
+            { "USD", "USS" },
+            {"CNY","CNY" },
+            {"EUR","EUS" },
+            {"JPY","JPS" },
+            {"MYR","MYS" },
+            {"SGD","SGS" },
+            {"THB","THB" }
+        };
+    
+
+        private static string DetermineDocumentType(IEnumerable<SAPPurchaseRequestModel.DocumentLine> documentLines)
+        {
+            return documentLines.Any(x => string.IsNullOrEmpty(x.ItemCode)) ? "DocTypeService" : "DocTypeItem";
+        }
+
+
         private static string ExtractSapMessage(string respText)
         {
             try
@@ -337,6 +396,5 @@ namespace SapGateway.Services
                 return respText;
             }
         }
-
     }
 }

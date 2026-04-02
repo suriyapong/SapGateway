@@ -45,6 +45,60 @@
     ]
   },
   {
+    "ContainingType": "SapGateway.Endpoints.WebPrEndpoints",
+    "Method": "HandleGetAllBudget",
+    "RelativePath": "budget/{company}/getAllBudget",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.WebPrEndpoints",
+    "Method": "HandleGetAllBudgetDetail",
+    "RelativePath": "budget/{company}/getAllBudgetDetail",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
     "Method": "HandleGetInfo",
     "RelativePath": "curencybot/{company}/info",
@@ -208,9 +262,9 @@
     ]
   },
   {
-    "ContainingType": "SapGateway.Endpoints.WebPrEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapWebPrEndpoints\u003Eb__0_0",
-    "RelativePath": "webpr/{company}/create-pr",
+    "ContainingType": "SapGateway.Endpoints.PurchaseRequestEndpoints",
+    "Method": "HandleCreatePurchaseRequestIteme",
+    "RelativePath": "purchaserequest/{company}/createitem",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
@@ -218,6 +272,38 @@
       {
         "Name": "company",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "SapGateway.Models.SAPPurchaseRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PurchaseRequestEndpoints",
+    "Method": "HandleCreatePurchaseService",
+    "RelativePath": "purchaserequest/{company}/createservice",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "SapGateway.Models.SAPPurchaseRequestModel",
         "IsRequired": true
       }
     ],

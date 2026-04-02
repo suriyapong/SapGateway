@@ -173,6 +173,7 @@ C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debu
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\SapGateway.pdb
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Azure.Core.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Azure.Identity.dll
+C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Dapper.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Works\Works_O\001 - Nova Empire\Projects\SAPGatewayGitHub\SapGateway\bin\Debug\net9.0\Microsoft.Bcl.Cryptography.dll

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRWSapGatewayebAPI.Models
+namespace SapGateway.Models
 {
     public class SAPBudgetModel
     {

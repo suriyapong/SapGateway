@@ -1,5 +1,12 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Data;
+
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using SapGateway.Models;
+using Dapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SapGateway.Services
 {
@@ -18,7 +25,8 @@ namespace SapGateway.Services
             var user = _config["SapSql:User"]!;
             var password = _config["SapSql:Password"]!;
 
-            return $"Server={host};Database={database};User Id={user};Password={password};TrustServerCertificate=True;";
+            //return $"Server={host};Database={database};User Id={user};Password={password};TrustServerCertificate=True;";
+            return $"Server={host};Initial Catalog={database};User Id={user};Password={password};Encrypt=False;TrustServerCertificate=True;";
         }
 
         public SqlConnection GetConnection(string company) => new SqlConnection(GetConnectionString(company));
@@ -41,6 +49,90 @@ namespace SapGateway.Services
             }
 
             return result;
+        }
+
+        public async Task<List<SAPBudgetModel>> GetAllBudget(string company, int year)
+        {
+            try
+            {
+                string conStr = GetConnectionString(company);
+
+                if (await TestConnectionAsync(conStr)) { 
+                    IDbConnection db = new SqlConnection(conStr);
+                    const string sql = @"
+                            select 
+                            T0.AcctCode
+                            , T0.AcctName
+                            , T0.OcrCode
+                            , T1.[PR-Draft]  + T1.PR + T1.[PO-Draft] + T1.PO + T1.GRPO + T1.AP  + T1.Accounting as 'total'
+                            , T0.Budget as 'budgetTotal'
+                            from HMC_BGBUDGET T0
+		                            left join HMC_BGACTUAL T1 on T0.AcctCode = T1.AcctCode
+					                            and T0.OcrCode = T1.OcrCode
+                                                and T1.[Year] = @Year
+                            where T0.BGYear = @Year";
+                    var result = await db.QueryAsync<SAPBudgetModel>(sql, new { Year = year });
+                    return result.ToList();
+                }
+                else
+                {
+                    throw new HttpRequestException($"SAP not connect");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException($"SAP API request failed with status {ex.Message}");
+            }
+        }
+
+        public async Task<List<SAPBudgetDetailModel>> GetAllBudgetDetail(string company, int year)
+        {
+            try
+            {
+                string conStr = GetConnectionString(company);
+
+                if (await TestConnectionAsync(conStr)) {
+                    IDbConnection db = new SqlConnection(conStr);
+                    const string sql = @"
+                        SELECT TOP (1000) [Year]
+                          ,[AcctCode]
+                          ,[AcctName]
+                          ,[OcrCode]
+                          ,[PR-Draft] as PRDraft
+                          ,[PR]
+                          ,[PO-Draft] as PODraft
+                          ,[PO]
+                          ,[GRPO]
+                          ,[AP]
+                          ,[Accounting]
+                        FROM [NovaEmpire].[dbo].[HMC_BGACTUAL] WHERE Year = @Year";
+                    var result = await db.QueryAsync<SAPBudgetDetailModel>(sql, new { Year = year });
+                    return result.ToList();
+                }
+                else
+                {
+                    throw new HttpRequestException($"SAP not connect");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException($"SAP API request failed with status {ex.Message}");
+            }
+        }
+
+        private async Task<bool> TestConnectionAsync(string connectionString)
+        {
+            try
+            {
+                using var conn = new SqlConnection(connectionString);
+                await conn.OpenAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }
