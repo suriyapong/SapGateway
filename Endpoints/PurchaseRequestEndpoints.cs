@@ -18,6 +18,7 @@ namespace SapGateway.Endpoints
 
             group.MapPost("/createitem", HandleCreatePurchaseRequestIteme);
             group.MapPost("/createservice", HandleCreatePurchaseService);
+            group.MapPost("/converttopr", HandleConvertToPurchaseRequest);
 
             Log.Information("Purchase Request Bot endpoints registered");
         }
@@ -51,5 +52,22 @@ namespace SapGateway.Endpoints
                 return Results.Problem(detail: ex.Message, statusCode: 500);
             }
         }
+
+        private static async Task<IResult> HandleConvertToPurchaseRequest(string company, DocumentRequestModel docEntry, SapServiceLayerClient sl, SeqLogService seqLog)
+        {
+            try
+            {
+                PurchaseRequestDraftModel pr = new PurchaseRequestDraftModel();
+                bool result = await sl.ConvertToPurchaseRequest(company, docEntry);
+ 
+                return Results.Ok(new { Message = $"Purchase Request created successfully for company : {company}" });
+            }
+            catch (Exception ex)
+            {
+                //Detail อยากให้ Return Text
+                return Results.Problem(detail: ex.Message, statusCode: 500);
+            }
+        }
+
     }
 }

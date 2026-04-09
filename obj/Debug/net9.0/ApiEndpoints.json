@@ -263,6 +263,33 @@
   },
   {
     "ContainingType": "SapGateway.Endpoints.PurchaseRequestEndpoints",
+    "Method": "HandleConvertToPurchaseRequest",
+    "RelativePath": "purchaserequest/{company}/converttopr",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docEntry",
+        "Type": "SapGateway.Models.DocumentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PurchaseRequestEndpoints",
     "Method": "HandleCreatePurchaseRequestIteme",
     "RelativePath": "purchaserequest/{company}/createitem",
     "HttpMethod": "POST",

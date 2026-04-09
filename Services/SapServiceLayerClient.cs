@@ -331,6 +331,40 @@ namespace SapGateway.Services
             return result;
         }
 
+        public async Task<bool> ConvertToPurchaseRequest(string company, DocumentRequestModel body)
+        {
+            bool result = false;
+
+            try
+            {
+                await EnsureLogin(company);
+
+                string jsonData = JsonConvert.SerializeObject(body);
+                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                var response = await _http.PostAsync("DraftsService_SaveDraftToDocument", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = true;
+                }
+                else
+                {
+                    var respText = await response.Content.ReadAsStringAsync();
+                    var sapMessage = ExtractSapMessage(respText);
+
+                    throw new Exception($"Purchase Request creation failed for company: {sapMessage}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[PostDataPurchaseRequest ERROR] {ex.Message}");
+                throw new Exception(ex.Message);
+            }
+
+            return result;
+        }
+
         //Private Zone
         private Dictionary<string, string> SellCurrencies = new Dictionary<string, string>
         {
