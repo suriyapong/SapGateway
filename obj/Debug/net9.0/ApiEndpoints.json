@@ -100,6 +100,30 @@
   },
   {
     "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
+    "Method": "HandleGetAllCurrency",
+    "RelativePath": "curencybot/{company}/getallcurency",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SapGateway.Models.CurrencyRateModel, SapGateway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.CurencyBotEndpoints",
     "Method": "HandleGetInfo",
     "RelativePath": "curencybot/{company}/info",
     "HttpMethod": "GET",
@@ -130,6 +154,28 @@
       {
         "Name": "body",
         "Type": "SapGateway.Endpoints.CurrencyUpdateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.MasterDataEndpoints",
+    "Method": "HandleAllUOM",
+    "RelativePath": "masterdata/{company}/getalluom",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -331,6 +377,33 @@
       {
         "Name": "request",
         "Type": "SapGateway.Models.SAPPurchaseRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SapGateway.Endpoints.PurchaseRequestEndpoints",
+    "Method": "HandleGetPurchaseRequest",
+    "RelativePath": "purchaserequest/{company}/get",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docNum",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

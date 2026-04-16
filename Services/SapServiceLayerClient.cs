@@ -170,7 +170,6 @@ namespace SapGateway.Services
             return invoiceDraft;
         }
 
-
         public async Task<bool> IsVendorPaymentExists(string company, string cardCode)
         {
             await EnsureLogin(company);
@@ -216,7 +215,6 @@ namespace SapGateway.Services
             using var doc = System.Text.Json.JsonDocument.Parse(await res.Content.ReadAsStringAsync());
             return doc.RootElement.GetProperty("value").GetArrayLength() > 0;
         }
-
 
         public async Task<SAPResponse<SAPPurchaseOrderModel>> GetPurchaseOrderByDocNum(string company, int docNum)
         {
@@ -287,7 +285,13 @@ namespace SapGateway.Services
                     data.value[0].PaymentTermsGroupName = rawPaymentGroup.PaymentTermsGroupName;
                 }
 
-                return data;
+                //Get requesterEmail และ PR No.
+                if (first != null && !string.IsNullOrEmpty(first.DocumentLines[0].BaseEntry.ToString()))
+                {
+                    GetPurchaseRequestByDocNum(company, 12);
+                }
+
+                    return data;
             }
             catch (Exception ex)
             {
@@ -365,6 +369,113 @@ namespace SapGateway.Services
             return result;
         }
 
+        public async Task<SAPResponse<SAPPurchaseRequestModel>> GetPurchaseRequestByDocNum(string company, int docNum)
+        {
+            try
+            {
+                await EnsureLogin(company);
+
+                string url = $"PurchaseRequests?$filter=DocNum eq {docNum}";
+                var response = await _http.GetAsync(url);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var sapMsg = ExtractSapMessage(raw);
+                    throw new Exception(sapMsg);
+                }
+
+                var data = await response.Content.ReadFromJsonAsync<SAPResponse<SAPPurchaseRequestModel>>();
+
+                var first = data?.value?.FirstOrDefault();
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<SAPPurchaseRequestByDocEntryModel> GetPurchaseRequestByDocEntry(string company, int docEntry)
+        {
+            try
+            {
+                await EnsureLogin(company);
+
+                string url = $"PurchaseRequests(" + docEntry + ")";
+                var response = await _http.GetAsync(url);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var sapMsg = ExtractSapMessage(raw);
+                    throw new Exception(sapMsg);
+                }
+
+                var data = await response.Content.ReadFromJsonAsync<SAPPurchaseRequestByDocEntryModel>();
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<SAPUOMModel> GetAllUnitOfMeasurements(string company)
+        {
+            try
+            {
+                await EnsureLogin(company);
+
+                string url = $"UnitOfMeasurements";
+                var response = await _http.GetAsync(url);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var sapMsg = ExtractSapMessage(raw);
+                    throw new Exception(sapMsg);
+                }
+
+                var data = await response.Content.ReadFromJsonAsync<SAPUOMModel>();
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
         //Private Zone
         private Dictionary<string, string> SellCurrencies = new Dictionary<string, string>
         {
@@ -377,12 +488,10 @@ namespace SapGateway.Services
             {"THB","THB" }
         };
     
-
         private static string DetermineDocumentType(IEnumerable<SAPPurchaseRequestModel.DocumentLine> documentLines)
         {
             return documentLines.Any(x => string.IsNullOrEmpty(x.ItemCode)) ? "DocTypeService" : "DocTypeItem";
         }
-
 
         private static string ExtractSapMessage(string respText)
         {

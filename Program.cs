@@ -42,6 +42,7 @@ app.MapApInvoiceBotEndpoints();
 app.MapPurchaseOrderEndpoints();
 app.MapBudgetEndpoints();
 app.MapPurchaseRequestEndpoints();
+app.MapMasterDataEndpoints();
 
 app.MapGet("/", () => "SAP Gateway API Running...");
 

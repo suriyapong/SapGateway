@@ -17,6 +17,7 @@ namespace SapGateway.Endpoints
 
             group.MapPost("/updatecurency", HandleInsertCurrency);
             group.MapGet("/info", HandleGetInfo);
+            group.MapGet("/getallcurency", HandleGetAllCurrency);
 
             // ข้อมูลปกติ
             Log.Information("Start Seq log!");
@@ -148,6 +149,81 @@ namespace SapGateway.Endpoints
                 }
             }
             return null;
+        }
+
+        private static async Task<List<CurrencyRateModel>> HandleGetAllCurrency(string date, IConfiguration config)
+        {
+            List<CurrencyRateModel> result = new List<CurrencyRateModel>();
+
+            var baseUrl = config.GetSection("CurrencyFromBank:BaseUrl").Value;
+            var authorization = config.GetSection("CurrencyFromBank:Authorization").Value;
+
+            HttpClient httpClient = new HttpClient();
+            // httpClient.DefaultRequestHeaders.Add("X-IBM-Client-Id", "fb62d2f3-364f-4b98-a7b1-2001c7518fa2");
+            httpClient.DefaultRequestHeaders.Add("Authorization", authorization);
+
+            DateTime dateTime = DateTime.Parse(date, CultureInfo.InvariantCulture).AddDays(-1);
+
+            const int maxRetries = 7; // prevent infinite loop
+            int attempt = 0;
+            var en = new System.Globalization.CultureInfo("en-US");
+
+            while (attempt < maxRetries)
+            {
+                try
+                {
+                    var url = baseUrl + $"?start_period={dateTime.ToString("yyyy-MM-dd", en)}&end_period={dateTime.ToString("yyyy-MM-dd", en)}";
+                    Console.WriteLine("Bot URL : ", url);
+
+                    var response = await httpClient.GetAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception(await response.Content.ReadAsStringAsync());
+                    }
+
+                    var contents = await response.Content.ReadFromJsonAsync<ExchageRateModel>();
+
+                    if (contents.result.data.data_detail.All(x => !string.IsNullOrEmpty(x.period)))
+                    {
+                        contents?.result?.data?.data_detail.ForEach(x =>
+                        {
+                            double selling = Convert.ToDouble(x.selling);
+                            double buying = Convert.ToDouble(x.buying_transfer);
+
+                            // ปรับ scale ตาม currency
+                            if (x.currency_id == "JPY")
+                            {
+                                selling /= 100;
+                                buying /= 100;
+                            }
+                            else if (x.currency_id == "IDR")
+                            {
+                                selling /= 1000;
+                                buying /= 1000;
+                            }
+
+                            CurrencyRateModel y = new CurrencyRateModel();
+                            y.Period = x.period;
+                            y.CurrencyId = x.currency_id;
+                            y.Selling = selling.ToString("F4");
+                            y.BuyingTransfer = buying.ToString("F4");
+                            result.Add(y);
+                        });
+
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error fetching exchange rate", ex);
+                }
+
+                // Try previous day
+                dateTime = dateTime.AddDays(-1);
+                attempt++;
+            }
+            return result;
         }
     }
 

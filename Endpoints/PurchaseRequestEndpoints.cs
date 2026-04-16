@@ -19,7 +19,7 @@ namespace SapGateway.Endpoints
             group.MapPost("/createitem", HandleCreatePurchaseRequestIteme);
             group.MapPost("/createservice", HandleCreatePurchaseService);
             group.MapPost("/converttopr", HandleConvertToPurchaseRequest);
-
+            group.MapGet("/get", HandleGetPurchaseRequest);
             Log.Information("Purchase Request Bot endpoints registered");
         }
 
@@ -69,5 +69,21 @@ namespace SapGateway.Endpoints
             }
         }
 
+        private static async Task<IResult> HandleGetPurchaseRequest(string company, int docNum, SapServiceLayerClient sl, SeqLogService seqLog)
+        {
+            try
+            {
+                if (docNum == null) return Results.BadRequest(new { message = "Request PRNo is required" });
+
+                SAPResponse<SAPPurchaseRequestModel> po = new SAPResponse<SAPPurchaseRequestModel>();
+                po = await sl.GetPurchaseRequestByDocNum(company, docNum);
+                return Results.Ok(new { Message = $"Get Purchase order company : {company}", data = po.value });
+            }
+            catch (Exception ex)
+            {
+                //Detail อยากให้ Return Text
+                return Results.Problem(detail: ex.Message, statusCode: 500);
+            }
+        }
     }
 }
