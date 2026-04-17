@@ -6,6 +6,7 @@
 
         public class ValueModel
         {
+            public int AbsEntry { get; set; }
             public string? Code { get; set; }
             public string? Name { get; set; }
         }
