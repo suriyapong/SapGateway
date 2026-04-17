@@ -164,10 +164,19 @@ namespace SapGateway.Endpoints
             {
                 if(item.Code != "THB") { 
                     decimal rate = await sl.GetAllCurrencyRateFromSAP(company, item.Code, date);
-                    ExchangeRateModel cur = new ExchangeRateModel();
-                    cur.Currency = item.Code;
-                    cur.Rate = rate;
-                    list.Add(cur);
+                    if (rate > 0) {
+                        ExchangeRateModel cur = new ExchangeRateModel();
+                        cur.Currency = item.Code;
+                        cur.Rate = rate;
+                        list.Add(cur);
+                    }
+                    else
+                    {
+                        ExchangeRateModel cur = new ExchangeRateModel();
+                        cur.Currency = item.Code;
+                        cur.Rate = 0;
+                        list.Add(cur);
+                    }
                 }else
                 {
                     ExchangeRateModel cur = new ExchangeRateModel();
