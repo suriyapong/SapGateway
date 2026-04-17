@@ -5,6 +5,8 @@ using Serilog;
 using System.Globalization;
 using System.Net.Http;
 using System.Text;
+using static System.Net.WebRequestMethods;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SapGateway.Endpoints
 {
@@ -151,7 +153,35 @@ namespace SapGateway.Endpoints
             return null;
         }
 
-        private static async Task<List<CurrencyRateModel>> HandleGetAllCurrency(string date, IConfiguration config)
+
+        private static async Task<List<ExchangeRateModel>> HandleGetAllCurrency(string company, string date, SapServiceLayerClient sl, IConfiguration config)
+        {
+            List<ExchangeRateModel> list = new List<ExchangeRateModel>();
+
+            SAPCurrenciesModel listCurSAP = await sl.GetAllCurrencyFromSAP(company);
+
+            foreach (var item in listCurSAP.value)
+            {
+                if(item.Code != "THB") { 
+                    decimal rate = await sl.GetAllCurrencyRateFromSAP(company, item.Code, date);
+                    ExchangeRateModel cur = new ExchangeRateModel();
+                    cur.Currency = item.Code;
+                    cur.Rate = rate;
+                    list.Add(cur);
+                }else
+                {
+                    ExchangeRateModel cur = new ExchangeRateModel();
+                    cur.Currency = item.Code;
+                    cur.Rate = 0;
+                    list.Add(cur);
+                }
+            }
+
+            return list;
+        }
+       
+
+        private static async Task<List<CurrencyRateModel>> GetAllCurrencyFromBank(string date, IConfiguration config)
         {
             List<CurrencyRateModel> result = new List<CurrencyRateModel>();
 
@@ -229,7 +259,7 @@ namespace SapGateway.Endpoints
 
     public record CurrencyUpdateRequest(
         string Period,
-        Boolean IsBuyingRate,
+        bool IsBuyingRate,
         string CurrencyId,
         string SAPCurrencyId
     );

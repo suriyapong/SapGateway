@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SapGateway.Models
 {
-    public class SAPExchangeRateModel
+    public class ExchangeRateModel
     {
-        public string CompanyName { get; set; }
-        public DateTime Period { get; set; }
-        public double Rate { get; set; }
-        public string CurrencyId { get; set; }
+        public string Currency { get; set; }
+        public decimal Rate { get; set; }
     }
 }

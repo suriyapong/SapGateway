@@ -476,6 +476,84 @@ namespace SapGateway.Services
             }
         }
 
+        public async Task<SAPCurrenciesModel> GetAllCurrencyFromSAP(string company)
+        {
+            try
+            {
+                await EnsureLogin(company);
+
+                string url = $"Currencies";
+                var response = await _http.GetAsync(url);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var sapMsg = ExtractSapMessage(raw);
+                    throw new Exception(sapMsg);
+                }
+
+                var data = await response.Content.ReadFromJsonAsync<SAPCurrenciesModel>();
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<decimal> GetAllCurrencyRateFromSAP(string company, string currency, string date)
+        {
+            try
+            {
+                await EnsureLogin(company);
+
+                string url = $"SBOBobService_GetCurrencyRate";
+                var body = new
+                {
+                    Currency = currency,
+                    Date = date
+                };
+
+                var content = new StringContent(
+                    System.Text.Json.JsonSerializer.Serialize(body),
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
+                var response = await _http.PostAsync(url, content);
+
+                // retry login
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await EnsureLogin(company);
+                    response = await _http.GetAsync(url);
+                }
+
+                var raw = await response.Content.ReadAsStringAsync();
+
+                if (!decimal.TryParse(raw, out var rate))
+                {
+                    throw new Exception($"Invalid SAP rate response: {raw}");
+                }
+
+                return rate;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
         //Private Zone
         private Dictionary<string, string> SellCurrencies = new Dictionary<string, string>
         {

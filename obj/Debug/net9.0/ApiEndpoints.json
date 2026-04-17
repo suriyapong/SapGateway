@@ -107,6 +107,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "company",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
         "Name": "date",
         "Type": "System.String",
         "IsRequired": true
@@ -114,7 +119,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[SapGateway.Models.CurrencyRateModel, SapGateway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[SapGateway.Models.ExchangeRateModel, SapGateway, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\endpoints\\masterdataendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\masterdataendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:endpoints\\curencybotendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|c:\\works\\works_o\\001 - nova empire\\projects\\sapgatewaygithub\\sapgateway\\services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48A22044-B18D-EE8A-FFEA-D39B1AF8DEA6}|SapGateway.csproj|solutionrelative:services\\sapservicelayerclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 285,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MasterDataEndpoints.cs",
-              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\MasterDataEndpoints.cs",
-              "RelativeDocumentMoniker": "Endpoints\\MasterDataEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\MasterDataEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\MasterDataEndpoints.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SapServiceLayerClient.cs",
+              "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeDocumentMoniker": "Services\\SapServiceLayerClient.cs",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Services\\SapServiceLayerClient.cs",
+              "RelativeToolTip": "Services\\SapServiceLayerClient.cs",
+              "ViewState": "AgIAAAcCAAAAAAAAAAAewCECAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T07:30:57.854Z",
+              "WhenOpened": "2026-04-17T11:18:29.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CurencyBotEndpoints.cs",
               "DocumentMoniker": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
               "RelativeDocumentMoniker": "Endpoints\\CurencyBotEndpoints.cs",
-              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs",
-              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Works\\Works_O\\001 - Nova Empire\\Projects\\SAPGatewayGitHub\\SapGateway\\Endpoints\\CurencyBotEndpoints.cs*",
+              "RelativeToolTip": "Endpoints\\CurencyBotEndpoints.cs*",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAewKIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T09:42:36.243Z",
               "EditorCaption": ""
